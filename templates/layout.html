@@ -43,6 +43,28 @@
         {% block content %}{% endblock %}
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-sm-4">
+        <form class="form-inline search">
+          <label>Search Movies</label>
+          <input type="text" class="form-control movie-input" name="q" placeholder="search movies">
+          <input type="hidden" name="api_key" value="bcd90145aa0a9afa766db2577135dbf4">
+          <input type="submit" value="Go!" class="btn btn-primary">
+        </form>
+      </div>
+      <div class="col-sm-8">
+        <div class="movie-gallery"></div>
+      </div>
+    </div>
+
+
+
   </div>
+  <script
+  src="http://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script src="../static/scripts/app.js"></script>
 </body>
 </html>
