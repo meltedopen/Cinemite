@@ -84,14 +84,5 @@ def logout():
 
 if __name__ == '__main__':
     models.initialize()
-    try:
-        models.User.create_user(
-            username='jimbo',
-            email="jim@jim.com",
-            password='password',
-            admin=True
-            )
-    except ValueError:
-        pass
 
     app.run(debug=DEBUG, port=PORT)
