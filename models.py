@@ -1,5 +1,6 @@
 import datetime
 from peewee import *
+from flask import jsonify
 
 from flask_login import UserMixin
 from flask_bcrypt import generate_password_hash
@@ -28,6 +29,27 @@ class User(UserMixin, Model):
                 avatar=avatar)
         except IntegrityError:
             raise ValueError("User already exists")
+
+class List(Model):
+    user_id = ForeignKeyField(User, backref="list"),
+    movie_id = IntegerField(),
+    watched = BooleanField(default=False),
+    comment = CharField(max_length=600),
+    timestamp = DateTimeField(default=datetime.datetime.now)
+
+    class Meta:
+        database = DATABASE
+
+    @classmethod
+    def create_list_item(cls, user_id, movie_id, watched, comment, timestamp):
+        new_list_item = List(user_id, movie_id, watched, comment, timestamp)
+        try:
+            db.session.add(new_list_item)
+            db.session.commit()
+        except:
+            db.session.rollback()
+            raise Exception('Session rollback')
+        return list_schema.jsonify(new_list_item)
             
 def initialize():
     DATABASE.connect()
