@@ -38,29 +38,28 @@ class User(UserMixin, Model):
             raise ValueError("User already exists")
 
 class List(Model):
-    user_id = ForeignKeyField(
+    user = ForeignKeyField(
         model=User, 
-        backref="list"),
-    movie_id = IntegerField(),
-    watched = BooleanField(default=False),
-    comment = CharField(max_length=600),
+        backref="lists")
+    movie_id = IntegerField()
+    watched = BooleanField(default=False)
+    comment = CharField(max_length=600, default='')
     timestamp = DateTimeField(default=datetime.datetime.now)
 
     class Meta:
         database = DATABASE
 
     @classmethod
-    def create_list_item(cls, user_id, movie_id, watched, comment, timestamp):
-        new_list_item = List(user_id, movie_id, watched, comment, timestamp)
+    def create_list_item(cls, user_id, movie_id):
         try:
-            db.session.add(new_list_item)
-            db.session.commit()
-        except:
-            db.session.rollback()
-            raise Exception('Session rollback')
-        return list_schema.jsonify(new_list_item)
+            cls.create(
+                user=user_id,
+                movie_id=movie_id
+                )
+        except IntegrityError:
+            raise
             
 def initialize():
     DATABASE.connect()
-    DATABASE.create_tables([User], safe=True)
+    DATABASE.create_tables([User, List], safe=True)
     DATABASE.close()

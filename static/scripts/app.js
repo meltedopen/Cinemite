@@ -1,7 +1,9 @@
 $(function () {
   // let key = "bcd90145aa0a9afa766db2577135dbf4";
   $('.search').on('submit', function (e) {
+    console.log('on submit')
     e.preventDefault();
+
     $('.movie-gallery').empty();
     let inputVal = $('.movie-input').val();
     let formattedInput = inputVal.replace(/ /g, '+');
@@ -26,16 +28,20 @@ $(function () {
         console.log(error);
       }
     });
-    // $.ajax({
-    //   method: 'POST',
-    //   url: //////////,
-    //   success: function(response) {
+  });
 
-    //   }
-    // })
-    $('.movie-gallery').on('click', '.result-image', function () {
-      console.log(this)
-    })
+  $('.movie-gallery').on('click', '.result-image', function (e) {
+    let clickedMovieId = e.target.getAttribute('data-id')
+    $.ajax({
+      method: 'POST',
+      url: `http://localhost:8000/movie/${clickedMovieId}`,
+      success: function(res){
+          console.log(`Clicked Movie ID was successfully added to DB: ${res}`)
+      },
+      error: function(error) {
+        console.log(error);
+      }
+    });
   });
 });
 

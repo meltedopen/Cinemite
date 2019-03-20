@@ -43,6 +43,12 @@ def after_request(response):
 def index():
     return render_template('layout.html')
 
+@app.route('/movie/<movieid>', methods=['POST'])
+def add_movie(movieid=None):
+    print(movieid)
+    models.List.create_list_item(current_user.id, movieid)
+    return 'success'
+
 @app.route('/register', methods=('GET', 'POST'))
 def register():
     form = forms.RegisterForm()
