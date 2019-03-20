@@ -30,6 +30,7 @@ def before_request():
     """Connect to the database before each request."""
     g.db = models.DATABASE
     g.db.connect()
+    g.user = current_user
 
 
 @app.after_request
@@ -40,7 +41,7 @@ def after_request(response):
 
 @app.route('/')
 def index():
-    return 'hi'
+    return render_template('layout.html')
 
 @app.route('/register', methods=('GET', 'POST'))
 def register():
@@ -80,6 +81,16 @@ def logout():
     logout_user()
     flash("You've been logged out", "success")
     return redirect(url_for('index'))
+
+@app.route('/list')
+@app.route('/list/<username>')
+@login_required
+def list(username=None):
+    from models import List
+    if username:
+        list = current_user.get_list().limit(100)
+        user = current_user
+    return render_tempate('template.html', list=list, user=user)
 
 
 if __name__ == '__main__':
