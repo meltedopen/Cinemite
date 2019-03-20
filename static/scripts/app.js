@@ -16,12 +16,12 @@ $(function () {
       success: function (response) {
         console.log(response);
         response.results.map(child => {
-          let movieId = child.id; //////////////
+          let movieId = child.id;
           let img = $(`<img class="result-image" data-id="${movieId}" />`);
           let url = "https://image.tmdb.org/t/p/w500" + child.poster_path
           img.attr("src", url)
           movieGallery.append(img);
-          return movieId;///////////////////////
+          return movieId;
         })
       },
       error: function (error) {
