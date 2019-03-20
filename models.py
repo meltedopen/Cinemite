@@ -4,7 +4,7 @@ from peewee import *
 from flask_login import UserMixin
 from flask_bcrypt import generate_password_hash
 
-DATABASE = SqliteDatabase('twit.db')
+DATABASE = SqliteDatabase('cinemite.db')
 
 class User(UserMixin, Model):
     username = CharField(unique=True)
