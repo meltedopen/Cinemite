@@ -1,4 +1,4 @@
-#!/Users/isaacchang/WDI-51/Projects/project03/Cinemite/.env/bin/python
+#!/Users/tiffanyteaze/wdi/projects/Cinemite/.env/bin/python
 
 import sys
 import getopt
