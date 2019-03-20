@@ -1,6 +1,10 @@
 import datetime
 from peewee import *
-from flask import jsonify
+
+from flask import Flask, g
+from flask import render_template, flash, redirect, url_for, jsonify
+from flask_login import LoginManager, login_user, logout_user, login_required, current_user
+from flask_bcrypt import check_password_hash
 
 from flask_login import UserMixin
 from flask_bcrypt import generate_password_hash
@@ -17,6 +21,9 @@ class User(UserMixin, Model):
     
     class Meta:
         database = DATABASE
+
+    def get_list(self):
+        return List.select().where(List.user_id == self)
         
     @classmethod
     def create_user(cls, username, email, password, avatar="./static/images/default_avatar.png", admin=False):
@@ -31,7 +38,9 @@ class User(UserMixin, Model):
             raise ValueError("User already exists")
 
 class List(Model):
-    user_id = ForeignKeyField(User, backref="list"),
+    user_id = ForeignKeyField(
+        model=User, 
+        backref="list"),
     movie_id = IntegerField(),
     watched = BooleanField(default=False),
     comment = CharField(max_length=600),
