@@ -17,6 +17,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
+
 @login_manager.user_loader
 def load_user(userid):
     try:
@@ -39,15 +40,23 @@ def after_request(response):
     g.db.close()
     return response
 
+
 @app.route('/')
 def index():
     return render_template('layout.html')
+
+
+@app.route('/movies')
+def movies():
+    return render_template('movies.html')
+
 
 @app.route('/movie/<movieid>', methods=['POST'])
 def add_movie(movieid=None):
     print(movieid)
     models.List.create_list_item(current_user.id, movieid)
     return 'success'
+
 
 @app.route('/register', methods=('GET', 'POST'))
 def register():
@@ -58,10 +67,11 @@ def register():
             username=form.username.data,
             email=form.email.data,
             password=form.password.data
-            )
+        )
 
         return redirect(url_for('index'))
     return render_template('register.html', form=form)
+
 
 @app.route('/login', methods=('GET', 'POST'))
 def login():
@@ -73,7 +83,7 @@ def login():
             flash("your email or password doesn't match", "error")
         else:
             if check_password_hash(user.password, form.password.data):
-                ## creates session
+                # creates session
                 login_user(user)
                 flash("You've been logged in", "success")
                 return redirect(url_for('index'))
@@ -81,12 +91,14 @@ def login():
                 flash("your email or password doesn't match", "error")
     return render_template('login.html', form=form)
 
+
 @app.route('/logout')
 @login_required
 def logout():
     logout_user()
     flash("You've been logged out", "success")
     return redirect(url_for('index'))
+
 
 @app.route('/list')
 @app.route('/list/<username>')
@@ -96,7 +108,8 @@ def list(username=None):
     if username:
         list = current_user.get_list().limit(100)
         user = current_user
-    return render_tempate('template.html', list=list, user=user)
+        return render_template('list.html', list=list, user=user)
+    return render_template('layout.html')
 
 
 if __name__ == '__main__':
