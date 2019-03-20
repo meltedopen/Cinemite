@@ -13,8 +13,7 @@ $(function () {
       method: 'GET',
       url: tmdbUrl,
       success: function (response) {
-        console.log(response);
-        response.data.results.map(child => {
+        response.results.map(child => {
           let img = $("<img />");
           let url = "https://image.tmdb.org/t/p/w500" + child.poster_path
           img.attr("src", url)
