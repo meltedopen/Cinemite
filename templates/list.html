@@ -2,14 +2,20 @@
 
 {% block content %}
 {% for item in list %}
-<div class="card" style="width: 18rem;">
+<div class="card" data-id={{ item.movie_id }} style="width: 18rem;">
   <time data-time="{{ item.timestamp }}" class="distime"
     datetime="{{ item.timestamp.strftime('%Y-%m-%d %H:%M') }}">{{ item.timestamp.strftime('%Y-%m-%d %H:%M') }}</time>
   <h5 class="card-title"><a class="btn btn-primary"
       href="{{ url_for('list', username=item.user_id.username) }}">{{ item.user_id.username }}</a></h5>
   <div class="card-body">
-    <p class="card-text">{{ item.movie_id }}</p>
+    <p class="card-text">Movie</p>
   </div>
 </div>
 {% endfor %}
+
+<script>
+  $(function() {
+    console.log("this")
+  })
+</script>
 {% endblock %}
