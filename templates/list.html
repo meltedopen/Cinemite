@@ -4,8 +4,9 @@
 {% for item in list %}
 <div class="card" data-id={{ item.movie_id }} style="width: 18rem;">
   <div class="image-wrapper"></div>
-  <form action="{{ url_for('delete', movieid=item.movie_id) }}" method=post class=delete-movie>
+  <form action="{{ url_for('delete', movieid=item.movie_id, userid=item.user) }}" method=post class=delete-movie>
   <input type=hidden value="{{item.movie_id}}"name=movieid</input>
+  <input type=hidden value="{{item.user}}"name=userid</input>
   <input type=submit></input>
   </form
 </div>
