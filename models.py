@@ -55,24 +55,6 @@ class User(UserMixin, Model):
     
     class Meta:
         database = DATABASE
-<<<<<<< HEAD
-        
-    @classmethod
-    def create_user(cls, username, email, password, admin=False):
-        try:
-            cls.create(
-                username=username,
-                email=email,
-                password=generate_password_hash(password),
-                is_admin=admin)
-        except IntegrityError:
-            raise ValueError("User already exists")
-            
-def initialize():
-    DATABASE.connect()
-    DATABASE.create_tables([User], safe=True)
-    DATABASE.close()
-=======
 
     @classmethod
     def create_list_item(cls, user_id, movie_id):
@@ -88,4 +70,3 @@ def initialize():
     DATABASE.connect()
     DATABASE.create_tables([User, List], safe=True)
     DATABASE.close()
->>>>>>> 3b768564d7606f9c5d96e3d03f580574b8e214be
