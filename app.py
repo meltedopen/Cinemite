@@ -46,7 +46,7 @@ def index():
     # if current_user.is_authenticated:
     return render_template('layout.html')
     # else:
-    # return render_template('landing.html')
+    #     return render_template('landing.html')
 
 
 @app.route('/movies')
