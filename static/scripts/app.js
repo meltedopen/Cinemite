@@ -35,14 +35,15 @@ $(function () {
     $.ajax({
       method: 'POST',
       url: `http://localhost:8000/movie/${clickedMovieId}`,
-      success: function(res){
-          console.log(`Clicked Movie ID was successfully added to DB: ${res}`)
+      success: function (res) {
+        console.log(`Clicked Movie ID was successfully added to DB: ${res}`)
       },
-      error: function(error) {
+      error: function (error) {
         console.log(error);
       }
     });
   });
+
 });
 
 
