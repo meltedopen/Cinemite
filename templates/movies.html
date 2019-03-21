@@ -1,0 +1,26 @@
+{% extends "layout.html" %} 
+
+{% block content %}
+<div class="row">
+  <div class="col-sm-4">
+    <form class="form-inline search">
+      <label>Search Movies</label>
+      <input
+        type="text"
+        class="form-control movie-input"
+        name="q"
+        placeholder="search movies"
+      />
+      <input
+        type="hidden"
+        name="api_key"
+        value="bcd90145aa0a9afa766db2577135dbf4"
+      />
+      <input type="submit" value="Go!" class="btn btn-primary" />
+    </form>
+  </div>
+  <div class="col-sm-8">
+    <div class="movie-gallery"></div>
+  </div>
+</div>
+{% endblock %}
