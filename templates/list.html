@@ -2,31 +2,46 @@
 
 {% block content %}
 {% for item in list %}
-<div class="card list-item-div" data-id={{ item.movie_id }} style="width: 18rem;">
-  <time data-time="{{ item.timestamp }}" class="distime"
-    datetime="{{ item.timestamp.strftime('%Y-%m-%d %H:%M') }}">{{ item.timestamp.strftime('%Y-%m-%d %H:%M') }}</time>
-  <h5 class="card-title"><a class="btn btn-primary"
-      href="{{ url_for('list', username=item.user_id.username) }}">{{ item.user_id.username }}</a></h5>
-  <div class="card-body">
-    <p class="card-text">Movie</p>
-  </div>
+<div class="card" data-id={{ item.movie_id }} style="width: 18rem;">
+  <div class="image-wrapper"></div>
+  <form action="{{ url_for('delete', movieid=item.movie_id) }}" method=post class=delete-movie>
+  <input type=hidden value="{{item.movie_id}}"name=movieid</input>
+  <input type=submit></input>
+  </form
 </div>
 {% endfor %}
 
 <script>
   let myListItems = [];
-  $(document).ready(function(){
-    let items = $('.list-item-div')
+  $(document).ready(function(e){
+
+    let items = $('.card')
 
     for (let i = 0; i < items.length; i++) {
       myListItems.push(items[i].attributes['data-id']['value']);
     }
 
-    $.ajax({ url: "list.html",
-           context: document.body,
-           success: function(){
-              console.log(myListItems)
-           }});
-    });
+    for(let i = 0; i < myListItems.length; i++) {
+      $.ajax({
+        method: 'GET',
+        url: `https://api.themoviedb.org/3/movie/${myListItems[i]}?api_key=bcd90145aa0a9afa766db2577135dbf4`,
+        success: function (response) {
+          let img = $(`<img class="my-list-image" movie-id="${myListItems[i]}" />`);
+          let url = "https://image.tmdb.org/t/p/w500" + response.poster_path
+          img.attr("src", url)
+
+          for (let j = 0; j < items.length; j++) {
+            if (myListItems[i] === items[j].getAttribute('data-id')) {
+              $(items[j]).children()[0].append(img[0]);
+            }
+          }
+          return myListItems[i];
+        },
+        error: function(error) {
+          console.log(error);
+        }
+      });
+    };
+  });
 </script>
 {% endblock %}
