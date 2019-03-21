@@ -39,7 +39,7 @@
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">My List</a>
+            <a class="nav-link my-list-link" href="{{ url_for('list', username=current_user.username) }}">My List</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('login') }}">Login test</a>

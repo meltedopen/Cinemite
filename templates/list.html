@@ -2,7 +2,7 @@
 
 {% block content %}
 {% for item in list %}
-<div class="card" data-id={{ item.movie_id }} style="width: 18rem;">
+<div class="card list-item-div" data-id={{ item.movie_id }} style="width: 18rem;">
   <time data-time="{{ item.timestamp }}" class="distime"
     datetime="{{ item.timestamp.strftime('%Y-%m-%d %H:%M') }}">{{ item.timestamp.strftime('%Y-%m-%d %H:%M') }}</time>
   <h5 class="card-title"><a class="btn btn-primary"
@@ -14,8 +14,19 @@
 {% endfor %}
 
 <script>
-  $(function() {
-    console.log("this")
-  })
+  let myListItems = [];
+  $(document).ready(function(){
+    let items = $('.list-item-div')
+
+    for (let i = 0; i < items.length; i++) {
+      myListItems.push(items[i].attributes['data-id']['value']);
+    }
+
+    $.ajax({ url: "list.html",
+           context: document.body,
+           success: function(){
+              console.log(myListItems)
+           }});
+    });
 </script>
 {% endblock %}
