@@ -11,6 +11,7 @@ from flask_bcrypt import generate_password_hash
 
 DATABASE = SqliteDatabase('cinemite.db')
 
+
 class User(UserMixin, Model):
     username = CharField(unique=True)
     email = CharField(unique=True)
@@ -18,13 +19,13 @@ class User(UserMixin, Model):
     avatar = CharField()
     joined_at = DateTimeField(default=datetime.datetime.now)
     is_admin = BooleanField(default=False)
-    
+
     class Meta:
         database = DATABASE
 
     def get_list(self):
         return List.select().where(List.user_id == self)
-        
+
     @classmethod
     def create_user(cls, username, email, password, avatar="./static/images/default_avatar.png", admin=False):
         try:
@@ -37,9 +38,10 @@ class User(UserMixin, Model):
         except IntegrityError:
             raise ValueError("User already exists")
 
+
 class List(Model):
     user = ForeignKeyField(
-        model=User, 
+        model=User,
         backref="lists")
     movie_id = IntegerField()
     watched = BooleanField(default=False)
@@ -55,10 +57,23 @@ class List(Model):
             cls.create(
                 user=user_id,
                 movie_id=movie_id
-                )
+            )
         except IntegrityError:
             raise
-            
+
+    @classmethod
+    def delete_list_item(cls, user_id, movie_id):
+        cls.delete().where(cls.user_id == user_id and cls.movie_id == movie_id).execute()
+
+        # try:
+        #     cls.delete(
+        #         user=user_id,
+        #         movie_id=movie_id
+        #     )
+        # except IntegrityError:
+        #     raise
+
+
 def initialize():
     DATABASE.connect()
     DATABASE.create_tables([User, List], safe=True)
