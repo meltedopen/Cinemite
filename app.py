@@ -43,7 +43,10 @@ def after_request(response):
 
 @app.route('/')
 def index():
+    # if current_user.is_authenticated:
     return render_template('layout.html')
+    # else:
+    #     return render_template('landing.html')
 
 
 @app.route('/movies')
