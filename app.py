@@ -115,14 +115,12 @@ def list(username=None):
     return render_template('layout.html')
 
 
-@app.route('/delete/<movieid>', methods=['POST'])
+@app.route('/delete/<movieid>/user/<userid>', methods=['POST'])
 @login_required
-def delete(movieid=None):
-    return 'you clicked delete'
-    # from models import List
-    # if movieid and request.method == 'POST':
-    #     return List.delete_list_item()
-    # return render_template('list.html')
+def delete(movieid=None, userid=None):
+    from models import List
+    List.delete_list_item(userid, movieid)
+    return render_template('list.html')
 
 
 if __name__ == '__main__':
