@@ -17,10 +17,11 @@ $(function () {
         console.log(response);
         response.results.map(child => {
           let movieId = child.id;
-          let img = $(`<img class="result-image" data-id="${movieId}" />`);
+          let img = $(`<img class="result-image" />`);
+          let btn = $(`<input class="result-button" type=submit value="Add" data-id="${movieId}"></input>`)
           let url = "https://image.tmdb.org/t/p/w500" + child.poster_path
           img.attr("src", url)
-          movieGallery.append(img);
+          movieGallery.append(img, btn);
           return movieId;
         })
       },
@@ -30,7 +31,7 @@ $(function () {
     });
   });
 
-  $('.movie-gallery').on('click', '.result-image', function (e) {
+  $('.movie-gallery').on('click', '.result-button', function (e) {
     let clickedMovieId = e.target.getAttribute('data-id')
     $.ajax({
       method: 'POST',
