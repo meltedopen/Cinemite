@@ -1,5 +1,5 @@
 from flask import Flask, g
-from flask import render_template, flash, redirect, url_for
+from flask import render_template, flash, redirect, url_for, request
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from flask_bcrypt import check_password_hash
 
@@ -113,6 +113,16 @@ def list(username=None):
         user = current_user
         return render_template('list.html', list=list, user=user)
     return render_template('layout.html')
+
+
+@app.route('/delete/<movieid>', methods=['POST'])
+@login_required
+def delete(movieid=None):
+    return 'you clicked delete'
+    # from models import List
+    # if movieid and request.method == 'POST':
+    #     return List.delete_list_item()
+    # return render_template('list.html')
 
 
 if __name__ == '__main__':

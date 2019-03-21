@@ -1,1 +1,15 @@
 /* styles */
+
+.list-item-div {
+  display: none;
+}
+
+.image-wrapper {
+  width: 100%;
+}
+
+.my-list-image {
+  max-width: 100%;
+}
+
+
