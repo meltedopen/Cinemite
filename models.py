@@ -50,6 +50,7 @@ class List(Model):
 
     class Meta:
         database = DATABASE
+        indexes = ((("user_id", "movie_id"), True),)
 
     @classmethod
     def create_list_item(cls, user_id, movie_id):
@@ -61,17 +62,9 @@ class List(Model):
         except IntegrityError:
             raise
 
-    @classmethod
-    def delete_list_item(cls, user_id, movie_id):
-        cls.delete().where(cls.user_id == user_id and cls.movie_id == movie_id).execute()
-
-        # try:
-        #     cls.delete(
-        #         user=user_id,
-        #         movie_id=movie_id
-        #     )
-        # except IntegrityError:
-        #     raise
+    # @classmethod
+    # def delete_list_item(cls, user_id, movie_id):
+    #     cls.delete_instance().where(cls.user == user_id and cls.movie_id == movie_id).execute()
 
 
 def initialize():
