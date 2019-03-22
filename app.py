@@ -54,6 +54,17 @@ def movies():
     return render_template('movies.html')
 
 
+@app.route('/movie/<movieid>/update', methods=['POST'])
+def update_comment(movieid):
+    movie_id = int(movieid)
+    form = forms.CommentForm()
+    list_item = models.List.select().where(models.List.user == current_user.id,
+                                           models.List.movie_id == movie_id).get()
+    list_item.comment = form.comment.data
+    list_item.save()
+    return redirect(url_for('movie', movieid=movieid))
+
+
 @app.route('/movie/<movieid>', methods=['POST'])
 def add_movie(movieid=None):
     print(movieid)
@@ -147,10 +158,17 @@ def update(movieid=None, userid=None):
     return redirect(url_for('list', username=current_user.username))
 
 
-@app.route('/movie/<movieid>', methods=['GET'])
+@app.route('/movie/<movieid>', methods=['GET', 'POST'])
 @login_required
 def movie(movieid=None):
-    return render_template('movie.html', movieid=movieid)
+    from models import List
+    form = forms.CommentForm()
+    if movieid and request.method == 'GET':
+        return render_template('movie.html', form=form, movieid=movieid)
+    elif movieid and request.method == 'POST':
+        comment = models.List.select().where(models.List.user == current_user,
+                                             models.List.movie_id == movieid).get()
+        comment.comment = form.comment.data
 
 
 if __name__ == '__main__':
