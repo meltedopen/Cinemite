@@ -143,7 +143,7 @@ def update(movieid=None, userid=None):
 @app.route('/movie/<movieid>', methods=['GET'])
 @login_required
 def movie(movieid=None):
-    return render_template('movie.html')
+    return render_template('movie.html', movieid=movieid)
 
 
 if __name__ == '__main__':

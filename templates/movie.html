@@ -1,4 +1,32 @@
 {% extends "layout.html" %}
 {% block content %}
   <h1>This is the movie details page</h1>
+  <div class="current-movie-image"></div>
+  <div class="current-movie-title"></div>
+  <div class="current-movie-description"></div>
+  <div class="current-movie-rating"></div>
+  <div class="current-movie">{{movieid}}</div>
+
+<script>
+  $(document).ready(function(e) {
+    let currentMovie = $('.current-movie').html();
+
+    $.ajax({
+      method: 'GET',
+      url: `https://api.themoviedb.org/3/movie/${currentMovie}?api_key=bcd90145aa0a9afa766db2577135dbf4`,
+      success: function(response) {
+        let img = $(`<img class="movie-details-image" movie-id="${currentMovie}" />`);
+        let url = "https://image.tmdb.org/t/p/w500" + response.poster_path;
+        let title = response.title;
+        let description = response.overview;
+        let rating = response.vote_average + "/10";
+        img.attr("src", url)
+        $(".current-movie-image").append(img)
+        $(".current-movie-title").append(title)
+        $(".current-movie-description").append(description)
+        $(".current-movie-rating").append(rating)
+      }
+    })
+  })
+</script>
 {% endblock %}

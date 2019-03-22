@@ -16,7 +16,7 @@
   </form>
   <form action="{{ url_for('movie', movieid=item.movie_id) }}" method=get class=get-movie>
     <input type=hidden value="{{item.movie_id}}"name=movieid</input>
-    <input type=submit value="View Details"></input>
+    <input type=submit class="movie-details"value="View Details"></input>
   </form>
 </div>
 {% endfor %}
