@@ -62,6 +62,25 @@ body {
   background-position: center top;
 }
 
+#home-heading {
+  position: relative;
+  min-height: 200px;
+  background: url('/static/images/lights.jpg');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  text-align: center;
+  color: #fff;
+}
+
+.dark-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+}
+
 #main-footer {
   background: #000;
   color: #fff;
@@ -76,4 +95,18 @@ body {
 
 .result-image {
   max-width: 100%;
+}
+
+#team i {
+  padding: 5px;
+}
+
+.fa-linkedin,
+.fa-github-square {
+  color: white;
+}
+
+.fa-linkedin:hover,
+.fa-github-square:hover {
+  color: grey;
 }
