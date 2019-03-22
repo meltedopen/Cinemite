@@ -62,10 +62,6 @@ class List(Model):
         except IntegrityError:
             raise
 
-    # @classmethod
-    # def delete_list_item(cls, user_id, movie_id):
-    #     cls.delete_instance().where(cls.user == user_id and cls.movie_id == movie_id).execute()
-
 
 def initialize():
     DATABASE.connect()
