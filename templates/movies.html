@@ -11,40 +11,19 @@
     <div class="carousel-inner">
       <div class="carousel-item carousel-image-1 active">
         <div class="container">
-          <div class="carousel-caption d-none d-sm-block text-right mb-5">
-            <h1 class="display-3">Heading One</h1>
-            <p class="lead">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut nulla
-              sit totam aspernatur eos placeat pariatur dicta suscipit quia qui!
-            </p>
-            <a href="#" class="btn btn-danger btn-lg">Sign Up Now</a>
-          </div>
+          <div class="carousel-caption d-none d-sm-block text-right mb-5"></div>
         </div>
       </div>
 
       <div class="carousel-item carousel-image-2">
         <div class="container">
-          <div class="carousel-caption d-none d-sm-block mb-5">
-            <h1 class="display-3">Heading Two</h1>
-            <p class="lead">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut nulla
-              sit totam aspernatur eos placeat pariatur dicta suscipit quia qui!
-            </p>
-            <a href="#" class="btn btn-primary btn-lg">Learn More</a>
-          </div>
+          <div class="carousel-caption d-none d-sm-block mb-5"></div>
         </div>
       </div>
 
       <div class="carousel-item carousel-image-3">
         <div class="container">
-          <div class="carousel-caption d-none d-sm-block text-right mb-5">
-            <h1 class="display-3">Heading Three</h1>
-            <p class="lead">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut nulla
-              sit totam aspernatur eos placeat pariatur dicta suscipit quia qui!
-            </p>
-            <a href="#" class="btn btn-success btn-lg">Learn More</a>
-          </div>
+          <div class="carousel-caption d-none d-sm-block text-right mb-5"></div>
         </div>
       </div>
     </div>
@@ -78,25 +57,81 @@
       <input type="submit" value="Go!" class="btn btn-primary" />
     </form>
   </div>
-  <div class="col-sm-8">
-    <div class="movie-gallery"></div>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="movie-gallery"></div>
+      </div>
+    </div>
   </div>
 </div>
+
+{% for item in list %}
+<div class="card" data-id={{ item.movie_id }} style="width: 18rem;">
+  <div class="image-wrapper"></div>
+</div>
+{% endfor %}
+
 <!-- END SEARCH -->
 
 <!-- START MOVIE GALLERY-->
+
 <section id="gallery" class="py-5">
-  <div class="container">
+  <div class="container-fluid">
     <h1 class="text-center">Movies</h1>
     <p class="text-center">Check out our movies</p>
-    <div class="row mb-2">
-      <div class="col-sm-2">
-        <a
-          href="https://source.unsplash.com/random/560x560"
-          data-gallery="img-gallery"
-          data-height="560"
-          data-width="560"
-        ></a>
+    <div class="row mb-4">
+      <div class="col-sm-2 movie-gallery"></div>
+      <div class="col-sm-2 movie-gallery"></div>
+      <div class="col-sm-2 movie-gallery"></div>
+      <div class="col-sm-2 movie-gallery"></div>
+      <div class="col-sm-2 movie-gallery"></div>
+      <div class="col-sm-2 movie-gallery"></div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-sm-2 movie-gallery"></div>
+      <div class="col-sm-2 movie-gallery"></div>
+      <div class="col-sm-2 movie-gallery"></div>
+      <div class="col-sm-2 movie-gallery"></div>
+      <div class="col-sm-2 movie-gallery"></div>
+      <div class="col-sm-2 movie-gallery"></div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-sm-2 movie-gallery"></div>
+      <div class="col-sm-2 movie-gallery"></div>
+      <div class="col-sm-2 movie-gallery"></div>
+      <div class="col-sm-2 movie-gallery"></div>
+      <div class="col-sm-2 movie-gallery"></div>
+      <div class="col-sm-2 movie-gallery"></div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section id="newsletter" class="text-center p-5 bg-dark text-white">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1>Sign Up For Our Newsletter</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio
+          asperiores consectetur, quae ducimus voluptates vero repellendus
+          architecto maiores recusandae mollitia?
+        </p>
+        <form class="form-inline justify-content-center">
+          <input
+            type="text"
+            class="form-control mb-2 mr-2"
+            placeholder="Enter Name"
+          />
+          <input
+            type="text"
+            class="form-control mb-2 mr-2"
+            placeholder="Enter Email"
+          />
+          <button class="btn btn-primary mb-2">Submit</button>
+        </form>
       </div>
     </div>
   </div>
