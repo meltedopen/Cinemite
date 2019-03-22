@@ -31,6 +31,10 @@ $(function () {
     });
   });
 
+  $('.movie-details').on('click', function (e) {
+    console.log(e.target);
+  })
+
   $('.movie-gallery').on('click', '.result-button', function (e) {
     let clickedMovieId = e.target.getAttribute('data-id')
     $.ajax({
