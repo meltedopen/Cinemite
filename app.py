@@ -44,7 +44,7 @@ def after_request(response):
 @app.route('/')
 def index():
     # if current_user.is_authenticated:
-    return render_template('layout.html')
+    return render_template('landing.html')
     # else:
     #     return render_template('landing.html')
 
@@ -101,6 +101,7 @@ def logout():
     logout_user()
     flash("You've been logged out", "success")
     return redirect(url_for('index'))
+
 
 @app.route('/user/<username>')
 @login_required

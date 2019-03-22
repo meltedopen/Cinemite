@@ -1,18 +1,150 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    />
-    <link rel="stylesheet" type="text/css" href="/static/styles.css" />
-  </head>
-  <body>
-    <h1>this is the landing page</h1>
-  </body>
-</html>
+{% extends "layout.html" %} {% block content %}
+
+<!-- START CAROUSEL -->
+<section id="showcase">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item carousel-image-1 active">
+        <div class="container">
+          <div class="carousel-caption d-none d-sm-block text-right mb-5"></div>
+        </div>
+      </div>
+
+      <div class="carousel-item carousel-image-2">
+        <div class="container">
+          <div class="carousel-caption d-none d-sm-block mb-5"></div>
+        </div>
+      </div>
+
+      <div class="carousel-item carousel-image-3">
+        <div class="container">
+          <div class="carousel-caption d-none d-sm-block text-right mb-5"></div>
+        </div>
+      </div>
+    </div>
+    <a href="#myCarousel" data-slide="prev" class="carousel-control-prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+
+    <a href="#myCarousel" data-slide="next" class="carousel-control-next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+  </div>
+</section>
+<!-- END CAROUSEL -->
+
+<!-- landing icons -->
+<section id="home-icons" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 mb-4 text-center">
+        <i class="fas fa-search fa-3x mb-2"></i>
+        <h3>Browse Movies</h3>
+        <p>
+          Browse all films on the Cinemite database and see their rating.
+        </p>
+      </div>
+      <div class="col-md-4 mb-4 text-center">
+        <i class="fas fa-ticket-alt fa-3x mb-2"></i>
+        <h3>Save Movies</h3>
+        <p>
+          Add movies to your watchlist to remember them in the future.
+        </p>
+      </div>
+      <div class="col-md-4 mb-4 text-center">
+        <i class="fas fa-film fa-3x mb-2"></i>
+        <h3>Review Movies</h3>
+        <p>
+          You can share your opinion of the films by writing a review!
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- landing heading -->
+<section id="home-heading" class="p-5">
+  <div class="dark-overlay">
+    <div class="row">
+      <div class="col">
+        <div class="container pt-5">
+          <h1>Ready To Get Started?</h1>
+          <p class="d-none d-md-block">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est eaque
+            magni sit dolores. Nisi, dolor nam modi perspiciatis consequatur
+            soluta.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- info section -->
+<section id="info" class="py-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 align-self-center">
+        <h3>Lorem Ipsum</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
+          eveniet blanditiis incidunt iusto corrupti illum cum laudantium ex
+          sequi amet.
+        </p>
+        <a href="{{ url_for('movies') }}" class="btn btn-outline-danger btn-lg"
+          >Get Started</a
+        >
+      </div>
+      <div class="col-md-6">
+        <img src="/static/images/movie.jpg" alt="" class="img-fluid" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- meet the team -->
+<section id="team" class="py-5 text-center bg-dark text-white">
+  <div class="container">
+    <h1>Meet The Team</h1>
+    <hr />
+    <div class="row">
+      <div class="col-md-4">
+        <img
+          src="/static/images/person1.jpg"
+          alt=""
+          class="img-fluid rounded-circle mb-2"
+        />
+        <h4>Tiffany Teaze</h4>
+        <a href="https://www.linkedin.com/in/tiffanyteaze/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+          <a href="https://github.com/tiffanyteaze" target="_blank"><i class="fab fa-github-square fa-2x"></i></a>  
+      </div>
+      <div class="col-md-4">
+        <img
+          src="/static/images/person3.jpg"
+          alt=""
+          class="img-fluid rounded-circle mb-2"
+        />
+        <h4>Joe Baker</h4>
+        <a href="https://www.linkedin.com/in/joelucasbaker/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+          <a href="https://github.com/josephlbaker" target="_blank"><i class="fab fa-github-square fa-2x"></i></a>  
+      </div>
+      <div class="col-md-4">
+        <img
+          src="/static/images/isaac.jpeg"
+          alt=""
+          class="img-fluid rounded-circle mb-2"
+        />
+        <h4>Isaac Chang</h4>
+          <a href="https://www.linkedin.com/in/isaacchang5/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+          <a href="https://github.com/meltedopen" target="_blank"><i class="fab fa-github-square fa-2x"></i></a>  
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
