@@ -100,7 +100,7 @@ def login():
                 # creates session
                 login_user(user)
                 flash("You've been logged in", "success")
-                return redirect(url_for('index'))
+                return redirect(url_for('movies'))
             else:
                 flash("your email or password doesn't match", "error")
     return render_template('login.html', form=form)
