@@ -102,6 +102,12 @@ def logout():
     flash("You've been logged out", "success")
     return redirect(url_for('index'))
 
+@app.route('/user/<username>')
+@login_required
+def user(username=None):
+    user = models.User.select().where(models.User.username == username).get()
+    return render_template('user.html', user=user)
+
 
 @app.route('/list')
 @app.route('/list/<username>')
