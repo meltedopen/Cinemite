@@ -13,6 +13,10 @@
 }
 
 /* isaac styles */
+body {
+  overflow-x: hidden;
+}
+
 .navbar .nav-link {
   font-size: 14px;
   text-transform: uppercase;
@@ -22,6 +26,11 @@
 
 .navbar .nav-item.active {
   border-left: #444 3px solid;
+}
+
+.col.target {
+  padding-right: 0;
+  padding-left: 0;
 }
 
 .carousel-item {
@@ -47,4 +56,20 @@
   background-size: cover;
   background-attachment: fixed;
   background-position: center top;
+}
+
+#main-footer {
+  background: #000;
+  color: #fff;
+}
+
+/* .movie-gallery {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+} */
+
+.result-image {
+  max-width: 100%;
 }
