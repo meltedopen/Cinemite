@@ -1,9 +1,9 @@
+import os
 from flask import Flask, g
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from flask_bcrypt import check_password_hash
 
-from flask.ext.heroku import Heroku
 
 import models
 import forms
@@ -17,8 +17,6 @@ app.secret_key = 'adkjfalj.adflja.dfnasdf.asd'
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
-
-heroku = Heroku(app)
 
 
 @login_manager.user_loader
@@ -173,6 +171,12 @@ def movie(movieid=None):
                                              models.List.movie_id == movieid).get()
         comment.comment = form.comment.data
 
+
+# import os at the top of your file
+
+if 'ON_HEROKU' in os.environ:
+    print('hitting ')
+    models.initialize()
 
 if __name__ == '__main__':
     models.initialize()
