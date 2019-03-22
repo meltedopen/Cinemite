@@ -1,5 +1,9 @@
 /* styles */
 
+.current-movie {
+  display: none;
+}
+
 .list-item-div {
   display: none;
 }

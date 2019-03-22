@@ -5,10 +5,19 @@
 <div class="card" data-id={{ item.movie_id }} style="width: 18rem;">
   <div class="image-wrapper"></div>
   <form action="{{ url_for('delete', movieid=item.movie_id, userid=item.user) }}" method=post class=delete-movie>
-  <input type=hidden value="{{item.movie_id}}"name=movieid</input>
-  <input type=hidden value="{{item.user}}"name=userid</input>
-  <input type=submit></input>
-  </form
+    <input type=hidden value="{{item.movie_id}}"name=movieid</input>
+    <input type=hidden value="{{item.user}}"name=userid</input>
+    <input type=submit value="Delete"></input>
+  </form>
+  <form action="{{ url_for('update', movieid=item.movie_id, userid=item.user) }}" method=post class=update-movie>
+    <input type=hidden value="{{item.movie_id}}"name=movieid</input>
+    <input type=hidden value="{{item.user}}"name=userid</input>
+    <input type=submit value="Watched"></input>
+  </form>
+  <form action="{{ url_for('movie', movieid=item.movie_id) }}" method=get class=get-movie>
+    <input type=hidden value="{{item.movie_id}}"name=movieid</input>
+    <input type=submit class="movie-details"value="View Details"></input>
+  </form>
 </div>
 {% endfor %}
 

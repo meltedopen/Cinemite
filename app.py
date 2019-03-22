@@ -118,9 +118,32 @@ def list(username=None):
 @app.route('/delete/<movieid>/user/<userid>', methods=['POST'])
 @login_required
 def delete(movieid=None, userid=None):
-    list = models.List.select().where(models.List.user==userid, models.List.movie_id==movieid).get()
+    list = models.List.select().where(models.List.user == userid,
+                                      models.List.movie_id == movieid).get()
     list.delete_instance()
     return redirect(url_for('list', username=current_user.username))
+
+
+@app.route('/update/<movieid>/user/<userid>', methods=['POST'])
+@login_required
+def update(movieid=None, userid=None):
+    list = models.List.select().where(models.List.user == userid,
+                                      models.List.movie_id == movieid).get()
+    if list.watched == 0:
+        list.watched = 1
+        list.save()
+        return redirect(url_for('list', username=current_user.username))
+    if list.watched == 1:
+        list.watched = 0
+        list.save()
+        return redirect(url_for('list', username=current_user.username))
+    return redirect(url_for('list', username=current_user.username))
+
+
+@app.route('/movie/<movieid>', methods=['GET'])
+@login_required
+def movie(movieid=None):
+    return render_template('movie.html', movieid=movieid)
 
 
 if __name__ == '__main__':
