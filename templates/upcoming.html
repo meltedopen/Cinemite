@@ -1,0 +1,27 @@
+<script>
+$(document).ready(function(e) {
+// Upcoming Movies AJAX call
+    $.ajax({
+    method: 'GET',
+    url: `https://api.themoviedb.org/3/movie/upcoming?api_key=${key}&language=en-US&page=1`,
+    success: function(response) {
+        console.log(`Upcoming:`)
+        console.log(response)
+        response.results.map(child => {
+        let movieId = child.id;
+        let img = $(`<img class="upcoming-image" />`);
+        let btn = $(
+            `<input class="upcoming" type=submit value="Add" data-id="${movieId}"></input>`
+        );
+        let url = 'https://image.tmdb.org/t/p/w500' + child.poster_path;
+        img.attr('src', url);
+        $('.upcoming').append(img, btn);
+        return movieId;
+        });
+    },
+    error: function(error) {
+        console.log(error);
+    }
+    });
+});
+</script>

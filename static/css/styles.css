@@ -93,7 +93,7 @@ body {
   background-position: center;
 } */
 
-.result-image {
+.result-image, .now-playing-image {
   max-width: 100%;
 }
 

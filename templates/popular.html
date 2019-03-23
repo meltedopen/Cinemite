@@ -1,0 +1,16 @@
+<script>
+    $(document).ready(function(e) {
+        // Popular Movies AJAX call
+        $.ajax({
+        method: 'GET',
+        url: `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1`,
+        success: function(response) {
+            console.log(`Popular:`)
+            console.log(response)
+        },
+        error: function(error) {
+            console.log(error);
+        }
+        });
+    });
+</script>
