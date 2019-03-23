@@ -1,14 +1,16 @@
 <script>
-    // Top Rated Movies AJAX call
-    $.ajax({
-    method: 'GET',
-    url: `https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=1`,
-    success: function(response) {
-        console.log(`Top Rated:`)
-        console.log(response)
-    },
-    error: function(error) {
-        console.log(error);
-    }
+    $(document).ready(function(e) {
+        // Top Rated Movies AJAX call
+        $.ajax({
+        method: 'GET',
+        url: `https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=1`,
+        success: function(response) {
+            console.log(`Top Rated:`)
+            console.log(response)
+        },
+        error: function(error) {
+            console.log(error);
+        }
+        });
     });
 </script>
