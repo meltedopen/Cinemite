@@ -1,6 +1,5 @@
 {% extends "layout.html" %} {% block content %}
 
-
 <!-- MOVIE SEARCH -->
 <div class="row">
   <div class="col-sm-4">
@@ -20,7 +19,7 @@
       <input type="submit" value="Go!" class="btn btn-primary" />
     </form>
   </div>
-  
+
   <div class="container">
     <div class="row">
       <div class="col-sm-2">
@@ -45,19 +44,23 @@
     <h1 class="text-center">Movies</h1>
     <p class="text-center">Check out our movies</p>
     <div class="row mb-4">
-      <div class="col-sm-2 now-playing"></div>
+      <div class='row'>
+      <div class="col now-playing"></div>
+      </div>
     </div>
-    <div class="row mb-4">
+  </div>
+</section>
+
+<!-- <div class="row mb-4">
       <div class="col-sm-2 upcoming"></div>
     </div>
     <div class="row mb-4">
       <div class="col-sm-2 popular"></div>
     </div>
     <div class="row mb-4">
-        <div class="col-sm-2 top-rated"></div>
+      <div class="col-sm-2 top-rated"></div>
     </div>
-  </div>
-</section>
+ -->
 
 <!-- NEWSLETTER -->
 <section id="newsletter" class="text-center p-5 bg-dark text-white">
@@ -91,29 +94,29 @@
 <script>
   let key = `bcd90145aa0a9afa766db2577135dbf4`;
   $(document).ready(function(e) {
-      // Now Playing Movies AJAX call
-      $.ajax({
-        method: 'GET',
-        url: `https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=1`,
-        success: function(response) {
-          console.log(`Now Playing:`)
-          console.log(response)
-          response.results.map(child => {
-            let movieId = child.id;
-            let img = $(`<img class="now-playing-image" />`);
-            let btn = $(
-              `<input class="now-playing-button" type=submit value="Add" data-id="${movieId}"></input>`
-            );
-            let url = 'https://image.tmdb.org/t/p/w500' + child.poster_path;
-            img.attr('src', url);
-            $('.now-playing').append(img, btn);
-            return movieId;
-          });
-        },
-        error: function(error) {
-          console.log(error);
-        }
-      });
+    // Now Playing Movies AJAX call
+    $.ajax({
+      method: 'GET',
+      url: `https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=1`,
+      success: function(response) {
+        console.log(`Now Playing:`);
+        console.log(response);
+        response.results.map(child => {
+          let movieId = child.id;
+          let img = $(`<img class="now-playing-image" />`);
+          let btn = $(
+            `<input class="now-playing-button" type=submit value="Add" data-id="${movieId}"></input>`
+          );
+          let url = 'https://image.tmdb.org/t/p/w500' + child.poster_path;
+          img.attr('src', url);
+          $('.now-playing').append(img, btn);
+          return movieId;
+        });
+      },
+      error: function(error) {
+        console.log(error);
+      }
+    });
   });
 
     $('.now-playing').on('click', '.now-playing-button', function(e) {
