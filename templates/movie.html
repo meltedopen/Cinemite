@@ -18,6 +18,11 @@
     <button type="submit" id="submit">Post Review</button>
   </form>
 
+  {% for comment in query %}
+  {{comment.comment}}
+  {{comment.user.username}}
+  {% endfor %}
+
 
 
 <script>

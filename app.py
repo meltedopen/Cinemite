@@ -2,6 +2,7 @@ from flask import Flask, g
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from flask_bcrypt import check_password_hash
+from peewee import fn
 
 
 import models
@@ -54,7 +55,7 @@ def movies():
     return render_template('movies.html')
 
 
-@app.route('/movie/<movieid>/update', methods=['POST'])
+@app.route('/movie/<movieid>/update', methods=['POST', 'GET'])
 def update_comment(movieid):
     movie_id = int(movieid)
     form = forms.CommentForm()
@@ -63,6 +64,15 @@ def update_comment(movieid):
     list_item.comment = form.comment.data
     list_item.save()
     return redirect(url_for('movie', movieid=movieid))
+
+
+def comments_list(movieid):
+    movie_id = int(movieid)
+    from models import List
+    query = List.select(List.comment).where(List.movie_id == movie_id)
+    for list in query:
+        print(list.comment)
+    return redirect(url_for('movie', movieid=movieid, query=query))
 
 
 @app.route('/movie/<movieid>', methods=['POST'])
@@ -158,17 +168,22 @@ def update(movieid=None, userid=None):
     return redirect(url_for('list', username=current_user.username))
 
 
+
 @app.route('/movie/<movieid>', methods=['GET', 'POST'])
 @login_required
 def movie(movieid=None):
     from models import List
     form = forms.CommentForm()
     if movieid and request.method == 'GET':
-        return render_template('movie.html', form=form, movieid=movieid)
+        movie_id = int(movieid)
+        from models import List, User
+        query = (List.select(List.comment, User.username).join(User).where(
+            User.id == List.user)).where(List.movie_id == movie_id and fn.length(List.comment) > 0)
+        return render_template('movie.html', form=form, movieid=movieid, query=query)
     elif movieid and request.method == 'POST':
         comment = models.List.select().where(models.List.user == current_user,
                                              models.List.movie_id == movieid).get()
-        comment.comment = form.comment.data
+        comment.comment = form.comment.datas
 
 
 if __name__ == '__main__':
