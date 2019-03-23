@@ -100,4 +100,61 @@
   </div>
 </section>
 
+<script>
+  let key = `bcd90145aa0a9afa766db2577135dbf4`;
+  $(document).ready(function(e) {
+      // Now Playing Movies AJAX call
+      $.ajax({
+        method: 'GET',
+        url: `https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=1`,
+        success: function(response) {
+          console.log(`Now Playing:`)
+          console.log(response)
+        },
+        error: function(error) {
+          console.log(error);
+        }
+      });
+
+      // Upcoming Movies AJAX call
+      $.ajax({
+        method: 'GET',
+        url: `https://api.themoviedb.org/3/movie/upcoming?api_key=${key}&language=en-US&page=1`,
+        success: function(response) {
+          console.log(`Upcoming:`)
+          console.log(response)
+        },
+        error: function(error) {
+          console.log(error);
+        }
+      });
+
+      // Popular Movies AJAX call
+      $.ajax({
+        method: 'GET',
+        url: `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1`,
+        success: function(response) {
+          console.log(`Popular:`)
+          console.log(response)
+        },
+        error: function(error) {
+          console.log(error);
+        }
+      });
+
+      // Top Rated Movies AJAX call
+      $.ajax({
+        method: 'GET',
+        url: `https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=1`,
+        success: function(response) {
+          console.log(`Top Rated:`)
+          console.log(response)
+        },
+        error: function(error) {
+          console.log(error);
+        }
+      });
+  });
+</script>
+
 {% endblock %}
