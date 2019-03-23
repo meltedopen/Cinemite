@@ -168,6 +168,7 @@ def update(movieid=None, userid=None):
     return redirect(url_for('list', username=current_user.username))
 
 
+
 @app.route('/movie/<movieid>', methods=['GET', 'POST'])
 @login_required
 def movie(movieid=None):
@@ -182,7 +183,7 @@ def movie(movieid=None):
     elif movieid and request.method == 'POST':
         comment = models.List.select().where(models.List.user == current_user,
                                              models.List.movie_id == movieid).get()
-        comment.comment = form.comment.data
+        comment.comment = form.comment.datas
 
 
 if __name__ == '__main__':
