@@ -24,6 +24,23 @@ class CommentForm(Form):
             DataRequired()
         ])
 
+class UserForm(Form):
+    username = StringField(
+        'Edit your username',
+        validators=[
+            DataRequired()
+        ])
+    email = StringField(
+        'Edit your email',
+        validators=[
+            DataRequired()
+        ])
+    password = StringField(
+        'Edit your password',
+        validators=[
+            DataRequired()
+        ])
+
 
 class RegisterForm(Form):
     username = StringField(
