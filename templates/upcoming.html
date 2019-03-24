@@ -1,4 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+<!-- START MOVIE GALLERY-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="row upcoming"></div>
+    </div>
+</div>
+
 <script>
+let key = `bcd90145aa0a9afa766db2577135dbf4`;
 $(document).ready(function(e) {
 // Upcoming Movies AJAX call
     $.ajax({
@@ -9,13 +19,17 @@ $(document).ready(function(e) {
         console.log(response)
         response.results.map(child => {
         let movieId = child.id;
+        let card = $(`<div class="card movie-wrapper"/>`);
         let img = $(`<img class="upcoming-image" />`);
+        let imgWrapper = $(`<div class="image-wrapper" />`);
         let btn = $(
-            `<input class="upcoming" type=submit value="Add" data-id="${movieId}"></input>`
+            `<input class="upcoming-button" type=submit value="Add" data-id="${movieId}"></input>`
         );
         let url = 'https://image.tmdb.org/t/p/w500' + child.poster_path;
         img.attr('src', url);
-        $('.upcoming').append(img, btn);
+        imgWrapper.append(img);
+        card.append(imgWrapper, btn)
+        $('.upcoming').append(card);
         return movieId;
         });
     },
@@ -25,3 +39,4 @@ $(document).ready(function(e) {
     });
 });
 </script>
+{% endblock %}
