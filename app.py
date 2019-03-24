@@ -55,6 +55,10 @@ def index():
 def movies():
     return render_template('movies.html')
 
+@app.route('/movies/upcoming')
+def upcoming_movies():
+    return render_template('upcoming.html')
+
 
 @app.route('/movie/<movieid>/update', methods=['POST', 'GET'])
 def update_comment(movieid):
