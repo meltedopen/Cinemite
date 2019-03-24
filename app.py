@@ -131,6 +131,24 @@ def user(username=None):
     return render_template('user.html', user=user)
 
 
+@app.route('/user/<userid>/update', methods=['GET', 'POST'])
+@login_required
+def update_user(userid=None):
+    form = forms.UserForm()
+    user_id = int(userid)
+    user = models.User.get(current_user.id)
+    if form.validate_on_submit():
+        user.username = form.username.data
+        user.email = form.email.data
+        user.password = form.password.data
+        user.save()
+        return redirect(url_for('user', username=user.username))
+    return render_template('edit-user.html', form=form, userid=userid)
+
+
+    
+
+
 @app.route('/list')
 @app.route('/list/<username>')
 @login_required

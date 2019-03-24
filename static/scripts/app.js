@@ -50,6 +50,7 @@ $(function() {
     });
   });
 
+
   $('.now-playing').on('click', '.now-playing-button', function(e) {
     console.log('You clicked on a movie');
     let clickedMovieId = e.target.getAttribute('data-id');
@@ -64,6 +65,7 @@ $(function() {
       }
     });
   });
+
 });
 
 // url = https://api.themoviedb.org/3/configuration?api_key=
