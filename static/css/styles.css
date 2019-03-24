@@ -104,3 +104,18 @@ body {
 .fa-github-square:hover {
   color: grey;
 }
+.movie-gallery,
+.now-playing {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0 20px;
+}
+
+.search-wrapper,
+.movie-wrapper {
+  width: 15% !important;
+  margin: 10px;
+  justify-content: space-between;
+  background: #000000;
+  border: none;
+}
