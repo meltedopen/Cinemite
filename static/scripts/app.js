@@ -51,7 +51,7 @@ $(function() {
   });
 
   $('.now-playing').on('click', '.now-playing-button', function(e) {
-    console.log("You clicked on a movie")
+    console.log('You clicked on a movie');
     let clickedMovieId = e.target.getAttribute('data-id');
     $.ajax({
       method: 'POST',

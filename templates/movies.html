@@ -1,8 +1,7 @@
 {% extends "layout.html" %} {% block content %}
 
 <!-- MOVIE SEARCH -->
-<div class="row">
-  <div class="col-sm-4">
+
     <form class="form-inline search">
       <label>Search Movies</label>
       <input
@@ -18,34 +17,45 @@
       />
       <input type="submit" value="Go!" class="btn btn-primary" />
     </form>
-  </div>
+  
+  
+  <section id="search" class="py-5">
+    <div class="container-fluid">
+        <div class='row'>
+          <div class="card movie-gallery" style="width: 15rem;"
+          ></div>
+            <div class="image-wrapper"></div>
+      </div>
+    </div>
+  </section>
 
+
+
+
+<!-- END SEARCH -->
+
+
+<!-- PAGE HEADER -->
+<header id="page-header">
   <div class="container">
     <div class="row">
-      <div class="col-sm-2">
-        <div class="movie-gallery"></div>
+      <div class="col-md-6 m-auto text-center">
+        <h1>Movies</h1>
+        <p>Check out our movies</p>
       </div>
     </div>
   </div>
-</div>
+</header>
 
-{% for item in list %}
-<div class="card" data-id={{ item.movie_id }} style="width: 18rem;">
-  <div class="image-wrapper"></div>
-</div>
-{% endfor %}
-
-<!-- END SEARCH -->
 
 <!-- START MOVIE GALLERY-->
 
 <section id="gallery" class="py-5">
   <div class="container-fluid">
-    <h1 class="text-center">Movies</h1>
-    <p class="text-center">Check out our movies</p>
-    <div class="row mb-4">
+    <div class="row">
       <div class='row'>
-      <div class="col now-playing"></div>
+        <div class="card now-playing" style="width: 15rem;">
+        </div>
       </div>
     </div>
   </div>

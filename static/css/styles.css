@@ -4,15 +4,13 @@
   display: none;
 }
 
-.list-item-div {
-  display: none;
-}
-
 .image-wrapper {
   width: 100%;
 }
 
-.my-list-image {
+.result-image,
+.my-list-image,
+.now-playing-image {
   max-width: 100%;
 }
 
@@ -92,10 +90,6 @@ body {
   background-attachment: fixed;
   background-position: center;
 } */
-
-.result-image, .now-playing-image {
-  max-width: 100%;
-}
 
 #team i {
   padding: 5px;
