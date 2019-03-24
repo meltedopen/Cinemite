@@ -6,4 +6,6 @@
 <p><b>Email:</b> {{ user.email }}</p>
 <p><b>Date Joined:</b> {{ user.joined_at }}</p>
 
+<button><a href="{{ url_for('update_user', userid=current_user.id)}}">Edit Profile</a></button>
+
 {% endblock %}

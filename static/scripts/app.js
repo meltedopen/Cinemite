@@ -49,21 +49,6 @@ $(function() {
       }
     });
   });
-
-  $('.now-playing').on('click', '.now-playing-button', function(e) {
-    console.log("You clicked on a movie")
-    let clickedMovieId = e.target.getAttribute('data-id');
-    $.ajax({
-      method: 'POST',
-      url: `http://localhost:8000/movie/${clickedMovieId}`,
-      success: function(res) {
-        console.log(`Clicked Movie ID was successfully added to DB: ${res}`);
-      },
-      error: function(error) {
-        console.log(error);
-      }
-    });
-  });
 });
 
 // url = https://api.themoviedb.org/3/configuration?api_key=
