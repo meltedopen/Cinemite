@@ -10,11 +10,13 @@
 
 .result-image,
 .my-list-image,
-.now-playing-image {
+.now-playing-image,
+.top-rated-image,
+.upcoming-image,
+.popular-image {
   max-width: 100%;
 }
 
-/* isaac styles */
 body {
   overflow-x: hidden;
 }
@@ -41,23 +43,26 @@ body {
 
 .carousel-image-1 {
   background: url('/static/images/slider1.jpg');
+  height: 700px;
+  background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed;
-  background-position: center top;
+  background-position: center;
 }
 
 .carousel-image-2 {
   background: url('/static/images/slider2.jpg');
+  height: 700px;
+  background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed;
   background-position: center top;
 }
 
 .carousel-image-3 {
   background: url('/static/images/slider3.jpg');
+  height: 700px;
+  background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed;
-  background-position: center top;
+  background-position: center;
 }
 
 #home-heading {
@@ -84,12 +89,9 @@ body {
   color: #fff;
 }
 
-/* .movie-gallery {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-} */
+.about-img {
+  margin-top: -50px;
+}
 
 #team i {
   padding: 5px;
