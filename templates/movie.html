@@ -32,26 +32,26 @@
   </section>
 
   <!-- ADD POST MODAL -->
-  
-  <div class="modal fade" id="addPostModal">  
-    <div class="modal-dialog modal-lg">    
-      <div class="modal-content">      
-        <div class="modal-header bg-primary text-white">       
+
+  <div class="modal fade" id="addPostModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
           <h5 class="modal-title">Add Review</h5>
           <button class="close" data-dismiss="modal">
             <span>&times;</span>
           </button>
         </div>
-        
+
       <div class="modal-body">
-        
+
         <form method="POST" action="{{url_for('update_comment', movieid=movieid)}}">
             {{ form.hidden_tag() }}
 
-            
+
             {{ form.comment.label }}
             {{ form.comment(class_="form-control") }}
-              
+
 
       </div>
           <div class="modal-footer">
@@ -61,16 +61,18 @@
               value="Submit"
               class="btn btn-primary"
             />
-          </div>            
+          </div>
         </form>
+
         {{ ckeditor.load(pkg_type="basic") }}
-        {{ ckeditor.config(name='comment') }}        
-      </div>      
-    </div>    
+        {{ ckeditor.config(name='comment') }}
+
+      </div>
+    </div>
   </div>
 
 
-  <div class="current-movie">{{movieid}}</div>  
+  <div class="current-movie">{{movieid}}</div>
   <div class="current-movie-image"></div>
   <div class="current-movie-title"></div>
   <div class="current-movie-description"></div>
@@ -78,13 +80,16 @@
 
 
   {% for comment in query %}
-  {{comment.comment}}
+  {% if comment.comment.startswith('<p>') and comment.comment.endswith('</p>') %}
+  {{comment.comment[3:-4]}}
   {{comment.user.username}}
+  {% endif %}
   {% endfor %}
 
 
 
 <script>
+
   $(document).ready(function(e) {
     let currentMovie = $('.current-movie').html();
 

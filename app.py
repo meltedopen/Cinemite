@@ -55,17 +55,21 @@ def index():
 def movies():
     return render_template('movies.html')
 
+
 @app.route('/movies/upcoming')
 def upcoming_movies():
     return render_template('upcoming.html')
+
 
 @app.route('/movies/popular')
 def popular_movies():
     return render_template('popular.html')
 
+
 @app.route('/movies/top_rated')
 def top_rated_movies():
     return render_template('top-rated.html')
+
 
 @app.route('/movie/<movieid>/update', methods=['POST', 'GET'])
 def update_comment(movieid):
@@ -204,7 +208,7 @@ def movie(movieid=None):
         movie_id = int(movieid)
         from models import List, User
         query = (List.select(List.comment, User.username).join(User).where(
-            User.id == List.user)).where(List.movie_id == movie_id and fn.length(List.comment) > 0)
+            User.id == List.user and List.movie_id == movie_id)).where(fn.length(List.comment) > 0)
         return render_template('movie.html', form=form, movieid=movieid, query=query)
     elif movieid and request.method == 'POST':
         comment = models.List.select().where(models.List.user == current_user,
