@@ -1,16 +1,57 @@
+{% extends "layout.html" %}
+{% block content %}
+<!-- START MOVIE GALLERY-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="row top-rated"></div>
+    </div>
+</div>
+
 <script>
-    $(document).ready(function(e) {
-        // Top Rated Movies AJAX call
-        $.ajax({
-        method: 'GET',
-        url: `https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=1`,
-        success: function(response) {
-            console.log(`Top Rated:`)
-            console.log(response)
-        },
-        error: function(error) {
-            console.log(error);
-        }
+let key = `bcd90145aa0a9afa766db2577135dbf4`;
+$(document).ready(function(e) {
+    // Top Rated Movies AJAX call
+    $.ajax({
+    method: 'GET',
+    url: `https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=1`,
+    success: function(response) {
+        console.log(`Top Rated:`)
+        console.log(response)
+        response.results.map(child => {
+            let movieId = child.id;
+            let card = $(`<div class="card movie-wrapper"/>`);
+            let img = $(`<img class="top-rated-image" />`);
+            let imgWrapper = $(`<div class="image-wrapper" />`);
+            let btn = $(
+                `<input class="top-rated-button" type=submit value="Add" data-id="${movieId}"></input>`
+            );
+            let url = 'https://image.tmdb.org/t/p/w500' + child.poster_path;
+            img.attr('src', url);
+            imgWrapper.append(img);
+            card.append(imgWrapper, btn)
+            $('.top-rated').append(card);
+            return movieId;
         });
+    },
+    error: function(error) {
+        console.log(error);
+    }
     });
+});
+
+$('.top-rated').on('click', '.top-rated-button', function(e) {
+    console.log("You clicked on a movie")
+    let clickedMovieId = e.target.getAttribute('data-id');
+    $.ajax({
+      method: 'POST',
+      url: `http://localhost:8000/movie/${clickedMovieId}`,
+      success: function(res) {
+        console.log(`Clicked Movie ID was successfully added to DB: ${res}`);
+      },
+      error: function(error) {
+        console.log(error);
+      }
+    });
+  });
 </script>
+{% endblock %}
