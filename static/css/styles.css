@@ -10,7 +10,10 @@
 
 .result-image,
 .my-list-image,
-.now-playing-image {
+.now-playing-image,
+.top-rated-image,
+.upcoming-image,
+.popular-image {
   max-width: 100%;
 }
 
