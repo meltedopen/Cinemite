@@ -137,7 +137,6 @@ def update_user(userid=None):
     form = forms.UserForm()
     user_id = int(userid)
     user = models.User.get(current_user.id)
-    # user = models.User.select().where(models.User.id == user_id).get()
     if form.validate_on_submit():
         user.username = form.username.data
         user.email = form.email.data
