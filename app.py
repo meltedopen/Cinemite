@@ -77,8 +77,8 @@ def comments_list(movieid):
 
 @app.route('/movie/<movieid>', methods=['POST'])
 def add_movie(movieid=None):
-    print(movieid)
     models.List.create_list_item(current_user.id, movieid)
+    flash('This movie has been added to your watch list.', 'success')
     return 'success'
 
 
@@ -86,7 +86,7 @@ def add_movie(movieid=None):
 def register():
     form = forms.RegisterForm()
     if form.validate_on_submit():
-        flash('Yay you registered', 'success')
+        flash('You have successfully registered for Cinemite!', 'success')
         models.User.create_user(
             username=form.username.data,
             email=form.email.data,
@@ -104,15 +104,15 @@ def login():
         try:
             user = models.User.get(models.User.email == form.email.data)
         except models.DoesNotExist:
-            flash("your email or password doesn't match", "error")
+            flash("This user does not exist.", "danger")
         else:
             if check_password_hash(user.password, form.password.data):
                 # creates session
                 login_user(user)
-                flash("You've been logged in", "success")
+                flash("You have successfully logged into Cinemite!", "success")
                 return redirect(url_for('movies'))
             else:
-                flash("your email or password doesn't match", "error")
+                flash("Your email or password is incorrect.", "danger")
     return render_template('login.html', form=form)
 
 
@@ -120,7 +120,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    flash("You've been logged out", "success")
+    flash("You have logged out of Cinemite.", "success")
     return redirect(url_for('index'))
 
 
@@ -144,9 +144,6 @@ def update_user(userid=None):
         user.save()
         return redirect(url_for('user', username=user.username))
     return render_template('edit-user.html', form=form, userid=userid)
-
-
-    
 
 
 @app.route('/list')
@@ -184,7 +181,6 @@ def update(movieid=None, userid=None):
         list.save()
         return redirect(url_for('list', username=current_user.username))
     return redirect(url_for('list', username=current_user.username))
-
 
 
 @app.route('/movie/<movieid>', methods=['GET', 'POST'])
