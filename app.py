@@ -51,6 +51,11 @@ def index():
     #     return render_template('landing.html')
 
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+
 @app.route('/movies')
 def movies():
     return render_template('movies.html')
