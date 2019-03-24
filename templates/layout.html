@@ -9,6 +9,11 @@
       crossorigin="anonymous"
     />
     <link
+      rel="shortcut icon"
+      href="/static/images/icon.ico"
+      type="image/x-icon"
+    />
+    <link
       rel="stylesheet"
       type="text/css"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -26,7 +31,16 @@
     <!-- navbar start -->
     <nav class="navbar navbar-expand-sm  navbar-dark bg-dark">
       <div class="container">
-        <a href="{{ url_for('index') }}" class="navbar-brand">Cinemite</a>
+        <a href="{{ url_for('index') }}" class="navbar-brand">
+          <img
+            src="/static/images/icon.png"
+            width="30"
+            height="30"
+            class="d-inline-block align-top"
+            alt=""
+          />
+          Cinemite
+        </a>
         <button
           class="navbar-toggler"
           data-toggle="collapse"
@@ -38,12 +52,54 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav">
             <li class="nav-item px-2">
-              <a href="{{ url_for('index') }}" class="nav-link active">Home</a>
+              <a href="{{ url_for('index') }}" class="nav-link">Home</a>
             </li>
-            <li class="nav-item px-2">
-              <a href="{{ url_for('movies') }}" class="nav-link">Movies</a>
+            <li class="nav-item dropdown mr-3">
+              <a
+                href="{{ url_for('movies') }}"
+                class="nav-link dropdown-toggle"
+                data-toggle="dropdown"
+              >
+                Movies
+              </a>
+              <div class="dropdown-menu">
+                <a href="#" class="dropdown-item">
+                  <i class="fas fa-play-circle"></i> Now Playing
+                </a>
+                <a href="#" class="dropdown-item">
+                  <i class="fas fa-clock"></i> Upcoming
+                </a>
+
+                <a href="#" class="dropdown-item">
+                  <i class="fas fa-award"></i> Top Rated
+                </a>
+
+                <a href="#" class="dropdown-item">
+                  <i class="fas fa-fire-alt"></i> Popular
+                </a>
+              </div>
             </li>
           </ul>
+
+          <form class="form-inline search my-2 my-lg-0 px-2">
+            <input
+              class="form-control movie-input mr-sm-2"
+              type="text"
+              name="q"
+              placeholder="Search Movies"
+              aria-label="Search"
+            />
+            <input
+              type="hidden"
+              name="api_key"
+              value="bcd90145aa0a9afa766db2577135dbf4"
+            />
+            <input
+              class="btn btn-outline-success my-2 my-sm-0"
+              type="submit"
+              value="Go!"
+            />
+          </form>
 
           {% if current_user.is_authenticated %}
           <ul class="navbar-nav ml-auto">
@@ -76,7 +132,7 @@
               </a>
             </li>
           </ul>
-          
+
           {%else%}
           <ul class="navbar-nav ml-auto">
             <li class="nav-item mr-3">
