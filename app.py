@@ -59,6 +59,13 @@ def movies():
 def upcoming_movies():
     return render_template('upcoming.html')
 
+@app.route('/movies/popular')
+def popular_movies():
+    return render_template('popular.html')
+
+@app.route('/movies/top_rated')
+def top_rated_movies():
+    return render_template('top-rated.html')
 
 @app.route('/movie/<movieid>/update', methods=['POST', 'GET'])
 def update_comment(movieid):
