@@ -18,19 +18,19 @@ $(document).ready(function(e) {
         console.log(`Upcoming:`)
         console.log(response)
         response.results.map(child => {
-        let movieId = child.id;
-        let card = $(`<div class="card movie-wrapper"/>`);
-        let img = $(`<img class="upcoming-image" />`);
-        let imgWrapper = $(`<div class="image-wrapper" />`);
-        let btn = $(
-            `<input class="upcoming-button" type=submit value="Add" data-id="${movieId}"></input>`
-        );
-        let url = 'https://image.tmdb.org/t/p/w500' + child.poster_path;
-        img.attr('src', url);
-        imgWrapper.append(img);
-        card.append(imgWrapper, btn)
-        $('.upcoming').append(card);
-        return movieId;
+            let movieId = child.id;
+            let card = $(`<div class="card movie-wrapper"/>`);
+            let img = $(`<img class="upcoming-image" />`);
+            let imgWrapper = $(`<div class="image-wrapper" />`);
+            let btn = $(
+                `<input class="upcoming-button" type=submit value="Add" data-id="${movieId}"></input>`
+            );
+            let url = 'https://image.tmdb.org/t/p/w500' + child.poster_path;
+            img.attr('src', url);
+            imgWrapper.append(img);
+            card.append(imgWrapper, btn)
+            $('.upcoming').append(card);
+            return movieId;
         });
     },
     error: function(error) {
