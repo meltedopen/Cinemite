@@ -1,12 +1,15 @@
 {% extends "layout.html" %} {% block content %}
 
+
+
+
 <!-- MOVIES HEADER -->
   <header id="main-header" class="py-2 bg-info text-white">
     <div class="container">
       <div class="row">
         <div class="col-md-6">
           <h1>
-            <i class="fas fa-film"></i> Movies</h1>
+            <i class="fas fa-list"></i> Movies</h1>
         </div>
       </div>
     </div>
@@ -14,34 +17,38 @@
 
 
 <!-- MOVIE SEARCH -->
-
-    <form class="form-inline search">
-      <label>Search Movies</label>
-      <input
-        type="text"
-        class="form-control movie-input"
-        name="q"
-        placeholder="search movies"
-      />
-      <input
-        type="hidden"
-        name="api_key"
-        value="bcd90145aa0a9afa766db2577135dbf4"
-      />
-      <input type="submit" value="Go!" class="btn btn-primary" />
-    </form>
-  
-  
-  <section id="search" class="py-5">
-    <div class="container-fluid">
-        <div class='row'>
-          <div class="card movie-gallery" style="width: 15rem;"
-          ></div>
-            <div class="image-wrapper"></div>
+<section id="search" class="py-4 mb-4 bg-light">
+  <div class="container">
+      <div class="row">
+        <div class="col-md-6 ml-auto">
+          <form class="form-inline search">
+            <input
+              type="text"
+              class="form-control movie-input"
+              name="q"
+              placeholder="Search Movies..."
+            />
+            <input
+              type="hidden"
+              name="api_key"
+              value="bcd90145aa0a9afa766db2577135dbf4"
+            />
+            <input type="submit" value="Search" class="btn btn-primary" />
+          </form> 
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
+<section id="search" class="py-5">
+  <div class="container-fluid">
+    <div class='row'>
+      <div class="card movie-gallery" style="width: 15rem;"
+      ></div>
+      <div class="image-wrapper"></div>
+    </div>
+  </div>
+</section>
 <!-- END SEARCH -->
 
 
