@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm as Form
 
 from models import User
-
-from wtforms import StringField, PasswordField, TextAreaField
+from flask_ckeditor import CKEditor, CKEditorField
+from wtforms import StringField, SubmitField, PasswordField, TextAreaField
 from wtforms.validators import (DataRequired, Regexp, ValidationError, Email,
                                 Length, EqualTo)
 
@@ -18,11 +18,12 @@ def email_exists(form, field):
 
 
 class CommentForm(Form):
-    comment = StringField(
+    comment = CKEditorField(
         'Write a review',
         validators=[
             DataRequired()
         ])
+
 
 class UserForm(Form):
     username = StringField(
