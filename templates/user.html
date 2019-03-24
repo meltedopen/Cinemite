@@ -1,18 +1,90 @@
 {% extends "layout.html" %}
-<<<<<<< HEAD
-<<<<<<< HEAD
-  
-=======
->>>>>>> 01f6e30fd94cc1e0869a8285092dfb15f98feab7
-=======
 
->>>>>>> 3ae365e69682e01737c5e0a7d6f6cbc20290f648
 {% block content %}
-<img src="{{ user.avatar }}">
+<!-- <img src="{{ user.avatar }}">
 <p><b>Username:</b> {{ user.username }}</p>
 <p><b>Email:</b> {{ user.email }}</p>
 <p><b>Date Joined:</b> {{ user.joined_at }}</p>
 
-<button><a href="{{ url_for('update_user', userid=current_user.id)}}">Edit Profile</a></button>
+<button><a href="{{ url_for('update_user', userid=current_user.id)}}">Edit Profile</a></button> -->
+
+
+  <!-- HEADER -->
+  <header id="main-header" class="py-2 bg-primary text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1>
+            <i class="fas fa-user"></i> Edit Profile</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ACTIONS -->
+  <section id="actions" class="py-4 mb-4 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <a href="#" class="btn btn-light btn-block">
+            <i class="fas fa-arrow-left"></i> Back To Dashboard
+          </a>
+        </div>
+        <div class="col-md-3">
+          <a href="#" class="btn btn-success btn-block">
+            <i class="fas fa-lock"></i> Change Password
+          </a>
+        </div>
+        <div class="col-md-3">
+          <a href="#" class="btn btn-danger btn-block">
+            <i class="fas fa-trash"></i> Delete Account
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFILE -->
+  <section id="profile">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          <div class="card">
+            <div class="card-header">
+              <h4>{{ user.username }} - joined on: {{ user.joined_at }}</h4>
+            </div>
+            <div class="card-body">
+
+              <form>
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input type="text" class="form-control" value=" {{ user.username }}">
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" value="{{ user.email }}">
+                </div>
+                <div class="form-group">
+                  <label for="passwrd">Password</label>
+                  <input type="password" class="form-control" value="">
+                </div>
+                <div class="form-group">
+                  <label for="password2">Confirm Password</label>
+                  <input type="password" class="form-control" value="">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <h3>Your Avatar</h3>
+          <img src="{{ user.avatar }}" alt="" class="d-block img-fluid mb-3">
+          <button class="btn btn-primary btn-block">Edit Image</button>
+          <button class="btn btn-danger btn-block">Delete Image</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
 
 {% endblock %}
