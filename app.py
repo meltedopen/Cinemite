@@ -1,9 +1,9 @@
 from flask import Flask, g
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, get_flashed_messages
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from flask_bcrypt import check_password_hash
 from flask_ckeditor import CKEditor, CKEditorField
-from peewee import fn
+from peewee import *
 
 
 import models
@@ -99,7 +99,6 @@ def comments_list(movieid):
 @app.route('/movie/<movieid>', methods=['POST'])
 def add_movie(movieid=None):
     models.List.create_list_item(current_user.id, movieid)
-    flash('This movie has been added to your watch list.', 'success')
     return 'success'
 
 
@@ -219,6 +218,12 @@ def movie(movieid=None):
         comment = models.List.select().where(models.List.user == current_user,
                                              models.List.movie_id == movieid).get()
         comment.comment = form.comment.datas
+
+
+@app.route('/search')
+def search():
+
+    return render_template('search.html')
 
 
 if __name__ == '__main__':
