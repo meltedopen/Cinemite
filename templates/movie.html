@@ -79,7 +79,7 @@
           <h2 class="current-movie-title"></h2>
       </div>
       <div class="card-body">
-   
+
   <div class="current-movie">{{movieid}}</div>
   <div class="current-movie-image"></div>
 </div>
@@ -94,8 +94,14 @@
       <div class="card card-body">
 {% for comment in query %}
 {% if comment.comment.startswith('<p>') and comment.comment.endswith('</p>') %}
+<<<<<<< HEAD
 {{comment.comment[3:-4]}} 
 - {{comment.user.username}} </br>
+=======
+<div class="card">{{comment.comment[3:-4]}}
+<i>-{{comment.user.username}}</i></div>
+<br />
+>>>>>>> ca857a5eeacec5dc0795edb6f4c32032a17cab9e
 {% endif %}
 {% endfor %}
 </div>
@@ -106,7 +112,7 @@
 </div>
 
 
- 
+
 
 
 
