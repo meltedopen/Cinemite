@@ -1,18 +1,9 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<!-- MOVIE RESULTS -->
-<section id="search" class="py-5">
-  <div class="container-fluid">
-    <div class='row'>
-      <div class='row movie-gallery'>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- END SEARCH -->
+
 <!-- POPULAR HEADER -->
-  <header id="main-header" class="py-2 bg-danger text-white">
+  <header id="main-header" class="py-2 mb-2 bg-danger text-white">
     <div class="container">
       <div class="row">
         <div class="col-md-6">
@@ -23,11 +14,13 @@
     </div>
   </header>
 
+<!-- MOVIE SEARCH RESULTS -->
+<div id="search" class= "container-fluid row movie-gallery">
+</div>
+
 <!-- START MOVIE GALLERY-->
 <div class="container-fluid">
-    <div class="row">
-        <div class="row popular"></div>
-    </div>
+  <div class="row popular"></div>
 </div>
 
 <script>

@@ -1,4 +1,8 @@
 /* styles */
+/* .top-rated {
+  float: none;
+  margin: 0 auto;
+} */
 
 .current-movie {
   display: none;
@@ -97,11 +101,13 @@ body {
   padding: 5px;
 }
 
+#main-footer a,
 .fa-linkedin,
 .fa-github-square {
   color: white;
 }
 
+#main-footer a:hover,
 .fa-linkedin:hover,
 .fa-github-square:hover {
   color: grey;
@@ -124,7 +130,7 @@ body {
   border: none;
 }
 
-.my-movie-list  {
+.my-movie-list {
   width: 15% !important;
   margin: 10px;
   justify-content: space-between;

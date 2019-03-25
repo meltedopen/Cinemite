@@ -29,7 +29,7 @@ $(function () {
           let url = 'https://image.tmdb.org/t/p/w500' + child.poster_path;
           img.attr('src', url);
           imgWrapper.append(img);
-          card.append(imgWrapper, btn)
+          card.append(imgWrapper, btn);
           if (child.poster_path) {
             movieGallery.append(card);
           }
@@ -56,7 +56,6 @@ $(function () {
     });
   });
 
-
   $('.now-playing').on('click', '.now-playing-button', function (e) {
     console.log('You clicked on a movie');
     let clickedMovieId = e.target.getAttribute('data-id');
@@ -71,7 +70,6 @@ $(function () {
       }
     });
   });
-
 });
 
 // url = https://api.themoviedb.org/3/configuration?api_key=
