@@ -14,7 +14,7 @@
     </div>
   </header>
 
-  <section id="actions" class="py-4 mb-4 bg-light">
+  <section id="actions" class="py-4 bg-light">
     <div class="container">
       <div class="row">
         <div class="col-md-3">
@@ -26,18 +26,11 @@
     </div>
   </section>
 
-<!-- MOVIE RESULTS -->
-<section id="search" class="py-5">
-  <div class="container-fluid">
-    <div class='row'>
-      <div class='row movie-gallery'>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- END SEARCH -->
+<!-- MOVIE SEARCH RESULTS -->
+<div id="search" class= "container-fluid row movie-gallery">
+</div>
 
-  <section id="list" class="py-5">
+  <section id="list" class="py-3">
     <div class="container-fluid">
       <div class='row'>
         <div class='row my-movies'>
@@ -48,11 +41,11 @@
             <form action="{{ url_for('delete', movieid=item.movie_id, userid=item.user) }}" method=post class=delete-movie>
               <input type=hidden value="{{item.movie_id}}"name=movieid</input>
               <input type=hidden value="{{item.user}}"name=userid</input>
-              <input type=submit value="Remove From List"></input>
+              <input type=submit value="Remove From List" class="btn btn-warning btn-block"></input>
             </form>
             <form action="{{ url_for('movie', movieid=item.movie_id) }}" method=get class=get-movie>
               <input type=hidden value="{{item.movie_id}}"name=movieid</input>
-              <input type=submit class="movie-details"value="View Details"></input>
+              <input type=submit class="movie-details btn btn-dark btn-block"value="View Details"></input>
             </form>
           </div>
           {% endfor %}

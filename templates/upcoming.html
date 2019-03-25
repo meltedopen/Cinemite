@@ -2,7 +2,7 @@
 {% block content %}
 
 <!-- UPCOMING HEADER -->
-  <header id="main-header" class="py-2 mb-2 bg-danger text-white">
+  <header id="main-header" class="py-2 mb-3 bg-danger text-white">
     <div class="container">
       <div class="row">
         <div class="col-md-6">
@@ -12,6 +12,7 @@
       </div>
     </div>
   </header>
+</div>
 
 <!-- MOVIE SEARCH RESULTS -->
 <div id="search" class= "container-fluid row movie-gallery">
@@ -38,7 +39,7 @@ $(document).ready(function(e) {
             let img = $(`<img class="upcoming-image" />`);
             let imgWrapper = $(`<div class="image-wrapper" />`);
             let btn = $(
-                `<input class="upcoming-button" type=submit value="Add to List" data-id="${movieId}"></input>`
+                `<input class="upcoming-button btn btn-dark btn-block" type=submit value="Add to List" data-id="${movieId}"></input>`
             );
             let url = 'https://image.tmdb.org/t/p/w500' + child.poster_path;
             img.attr('src', url);
