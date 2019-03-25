@@ -1,16 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<!-- MOVIE RESULTS -->
-<section id="search" class="py-5">
-  <div class="container-fluid">
-    <div class='row'>
-      <div class='row movie-gallery'>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- END SEARCH -->
+
 <!-- TOP-RATED HEADER -->
   <header id="main-header" class="py-2 bg-danger text-white">
     <div class="container">
@@ -22,6 +13,16 @@
       </div>
     </div>
   </header>
+
+<!-- MOVIE SEARCH RESULTS -->
+<section id="search" class="py-5">
+  <div class="container-fluid">
+    <div class='row'>
+      <div class='row movie-gallery'>
+      </div>
+    </div>
+  </div>
+
 
 <!-- START MOVIE GALLERY-->
 <div class="container-fluid">
@@ -46,7 +47,7 @@ $(document).ready(function(e) {
             let img = $(`<img class="top-rated-image" />`);
             let imgWrapper = $(`<div class="image-wrapper" />`);
             let btn = $(
-                `<input class="top-rated-button" type=submit value="Add" data-id="${movieId}"></input>`
+                `<input class="top-rated-button btn btn-dark btn-block" type=submit value="Add" data-id="${movieId}"></input>`
             );
             let url = 'https://image.tmdb.org/t/p/w500' + child.poster_path;
             img.attr('src', url);
