@@ -58,6 +58,8 @@ $(document).ready(function(e) {
 $('.upcoming').on('click', '.upcoming-button', function(e) {
     console.log("You clicked on a movie")
     let clickedMovieId = e.target.getAttribute('data-id');
+    $(this).val('Added').attr('disabled', true);
+
     $.ajax({
       method: 'POST',
       url: `http://localhost:8000/movie/${clickedMovieId}`,
