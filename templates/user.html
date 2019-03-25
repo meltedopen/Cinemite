@@ -46,7 +46,7 @@
         <div class="col-md-9">
           <div class="card">
             <div class="card-header">
-              <h4>{{ user.username }} - joined on: {{ user.joined_at }}</h4>
+              <h4>{{ user.username }} - joined on: {{ user.joined_at.strftime("%B %d, %Y") }}</h4>
             </div>
             <div class="card-body">
 
