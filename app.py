@@ -57,21 +57,25 @@ def about():
 
 
 @app.route('/movies')
+@login_required
 def movies():
     return render_template('movies.html')
 
 
 @app.route('/movies/upcoming')
+@login_required
 def upcoming_movies():
     return render_template('upcoming.html')
 
 
 @app.route('/movies/popular')
+@login_required
 def popular_movies():
     return render_template('popular.html')
 
 
 @app.route('/movies/top_rated')
+@login_required
 def top_rated_movies():
     return render_template('top-rated.html')
 
