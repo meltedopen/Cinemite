@@ -6,7 +6,11 @@ $(document).ready(function() {
 
   // slider config
   $('.carousel').carousel({
-    interval: 4000,
+    interval: 3000,
     pause: false
+  });
+
+  $('.port-item').click(function() {
+    $('.collapse').collapse('hide');
   });
 });
