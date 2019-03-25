@@ -15,7 +15,7 @@
       <div class="row">
         <div class="col-md-6">
           <h1>
-            <i class="fas fa-user"></i> Edit Profile</h1>
+            <i class="fas fa-user"></i> My Profile</h1>
         </div>
       </div>
     </div>
@@ -31,12 +31,9 @@
           </a>
         </div>
         <div class="col-md-3">
-          <a href="#" class="btn btn-success btn-block">
-            <i class="fas fa-check"></i> Save
+          <a href="{{ url_for('update_user', userid=current_user.id)}}" class="btn btn-primary btn-block">
+            <i class="fas fa-check"></i> Edit Profile
           </a>
-        </div>
-        <div>
-        <button><a href="{{ url_for('update_user', userid=current_user.id)}}">Edit Profile</a></button>
         </div>
       </div>
     </div>
@@ -49,19 +46,23 @@
         <div class="col-md-9">
           <div class="card">
             <div class="card-header">
-              <h4>{{ user.username }} - joined on: {{ user.joined_at }}</h4>
+              <h4>Profile</h4>
             </div>
             <div class="card-body">
 
-              <form>
                 <div class="form-group">
-                  <label for="username">Username</label>
-                  <input type="text" class="form-control" value=" {{ user.username }}">
+                  <label for="username" class="font-weight-bold">Username: </label>
+                  <label for="username">{{ user.username }}</label>
                 </div>
                 <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="email" class="form-control" value="{{ user.email }}">
+                  <label for="email" class="font-weight-bold">Email: </label>
+                  <label for="email">{{ user.email }}</label>
                 </div>
+                <div class="form-group">
+                  <label for="joined_at" class="font-weight-bold">Joined on: </label>
+                  <label for="joined_at">{{ user.joined_at }}</label>
+                </div>
+                <!--
                 <div class="form-group">
                   <label for="passwrd">Password</label>
                   <input type="password" class="form-control" value="">
@@ -70,7 +71,7 @@
                   <label for="password2">Confirm Password</label>
                   <input type="password" class="form-control" value="">
                 </div>
-              </form>
+                -->
             </div>
           </div>
         </div>

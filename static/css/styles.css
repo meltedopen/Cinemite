@@ -163,6 +163,12 @@ input[disabled='disabled'] {
   color: #ffffff;
 }
 
+.field input{
+  margin-left: auto;
+  margin-right: auto;
+  background-color: red !important;
+}
+
 @media only screen and (max-width: 500px) {
   .my-movies,
   .movie-gallery,

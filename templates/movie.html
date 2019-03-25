@@ -54,15 +54,15 @@
 
 
       </div>
-          <div class="modal-footer">
-            <input
-              type="submit"
-              id="submit"
-              value="Submit"
-              class="btn btn-primary"
-            />
-          </div>
-        </form>
+        <div class="modal-footer">
+          <input
+            type="submit"
+            id="submit"
+            value="Submit"
+            class="btn btn-primary"
+          />
+        </div>
+      </form>
 
         {{ ckeditor.load(pkg_type="basic") }}
         {{ ckeditor.config(name='comment') }}
@@ -71,20 +71,42 @@
     </div>
   </div>
 
-
+<div class="container-fluid my-3">
+  <div class="d-flex justify-content-center">
+<div class="col-5">
+    <div class="card text-center bg-white mb-3">
+      <div class="card-header bg-dark text-white">
+          <h2 class="current-movie-title"></h2>
+      </div>
+      <div class="card-body">
+   
   <div class="current-movie">{{movieid}}</div>
   <div class="current-movie-image"></div>
-  <div class="current-movie-title"></div>
-  <div class="current-movie-description"></div>
-  <div class="current-movie-rating"></div>
+</div>
+<ul class="list-group list-group-flush text-black">
+  <li class="current-movie-description list-group-item bg-light"></li>
+  <li class="current-movie-rating list-group-item bg-dark text-white font-weight-bold">Rating: </li>
+</ul>
+<button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#collapseCard" aria-expanded="false" aria-controls="collapseCard">
+    View Comments
+  </button>
+  <div class="collapse" id="collapseCard">
+      <div class="card card-body">
+{% for comment in query %}
+{% if comment.comment.startswith('<p>') and comment.comment.endswith('</p>') %}
+{{comment.comment[3:-4]}}
+- {{comment.user.username}} 
+{% endif %}
+{% endfor %}
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 
-  {% for comment in query %}
-  {% if comment.comment.startswith('<p>') and comment.comment.endswith('</p>') %}
-  {{comment.comment[3:-4]}}
-  {{comment.user.username}}
-  {% endif %}
-  {% endfor %}
+ 
 
 
 
