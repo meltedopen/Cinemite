@@ -59,8 +59,8 @@
                   <label for="email">{{ user.email }}</label>
                 </div>
                 <div class="form-group">
-                  <label for="joined_at" class="font-weight-bold">Joined on: </label>
-                  <label for="joined_at">{{ user.joined_at }}</label>
+                  <label for="joined_at" class="font-weight-bold">Joined: </label>
+                  <label for="joined_at">{{ user.joined_at.strftime("%B %d, %Y") }}</label>
                 </div>
                 <!--
                 <div class="form-group">
