@@ -9,8 +9,8 @@
 <button><a href="{{ url_for('update_user', userid=current_user.id)}}">Edit Profile</a></button> -->
 
 
-  <!-- HEADER -->
-  <header id="main-header" class="py-2 bg-primary text-white">
+  <!-- USER HEADER -->
+  <header id="main-header" class="py-2 bg-danger text-white">
     <div class="container">
       <div class="row">
         <div class="col-md-6">
@@ -26,19 +26,17 @@
     <div class="container">
       <div class="row">
         <div class="col-md-3">
-          <a href="#" class="btn btn-light btn-block">
-            <i class="fas fa-arrow-left"></i> Back To Dashboard
+          <a href="{{ url_for('movies') }}" class="btn btn-light btn-block">
+            <i class="fas fa-arrow-left"></i> Back To Movies
           </a>
         </div>
         <div class="col-md-3">
           <a href="#" class="btn btn-success btn-block">
-            <i class="fas fa-lock"></i> Change Password
+            <i class="fas fa-check"></i> Save
           </a>
         </div>
-        <div class="col-md-3">
-          <a href="#" class="btn btn-danger btn-block">
-            <i class="fas fa-trash"></i> Delete Account
-          </a>
+        <div>
+        <button><a href="{{ url_for('update_user', userid=current_user.id)}}">Edit Profile</a></button>
         </div>
       </div>
     </div>

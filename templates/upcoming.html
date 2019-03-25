@@ -1,4 +1,30 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<!-- UPCOMING HEADER -->
+  <header id="main-header" class="py-2 mb-3 bg-danger text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1>
+            <i class="fas fa-clock"></i> Upcoming</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
+
+<!-- MOVIE SEARCH RESULTS -->
+<div id="search" class= "container-fluid row movie-gallery">
+</div>
+
+<!-- START MOVIE GALLERY-->
+<div class="container-fluid">
+  <div class="row upcoming"></div>
+</div>
+
 <script>
+let key = `bcd90145aa0a9afa766db2577135dbf4`;
 $(document).ready(function(e) {
 // Upcoming Movies AJAX call
     $.ajax({
@@ -8,15 +34,19 @@ $(document).ready(function(e) {
         console.log(`Upcoming:`)
         console.log(response)
         response.results.map(child => {
-        let movieId = child.id;
-        let img = $(`<img class="upcoming-image" />`);
-        let btn = $(
-            `<input class="upcoming" type=submit value="Add" data-id="${movieId}"></input>`
-        );
-        let url = 'https://image.tmdb.org/t/p/w500' + child.poster_path;
-        img.attr('src', url);
-        $('.upcoming').append(img, btn);
-        return movieId;
+            let movieId = child.id;
+            let card = $(`<div class="card movie-wrapper"/>`);
+            let img = $(`<img class="upcoming-image" />`);
+            let imgWrapper = $(`<div class="image-wrapper" />`);
+            let btn = $(
+                `<input class="upcoming-button btn btn-dark btn-block" type=submit value="Add to List" data-id="${movieId}"></input>`
+            );
+            let url = 'https://image.tmdb.org/t/p/w500' + child.poster_path;
+            img.attr('src', url);
+            imgWrapper.append(img);
+            card.append(imgWrapper, btn)
+            $('.upcoming').append(card);
+            return movieId;
         });
     },
     error: function(error) {
@@ -24,4 +54,20 @@ $(document).ready(function(e) {
     }
     });
 });
+
+$('.upcoming').on('click', '.upcoming-button', function(e) {
+    console.log("You clicked on a movie")
+    let clickedMovieId = e.target.getAttribute('data-id');
+    $.ajax({
+      method: 'POST',
+      url: `http://localhost:8000/movie/${clickedMovieId}`,
+      success: function(res) {
+        console.log(`Clicked Movie ID was successfully added to DB: ${res}`);
+      },
+      error: function(error) {
+        console.log(error);
+      }
+    });
+  });
 </script>
+{% endblock %}

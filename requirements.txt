@@ -8,7 +8,11 @@ Click==7.0
 decorator==4.3.2
 Flask==1.0.2
 Flask-Bcrypt==0.7.1
+<<<<<<< HEAD
 flask-heroku==0.1.9
+=======
+Flask-CKEditor==0.4.3
+>>>>>>> d22697c6f563e677c6956c2a44fb7da77fbbe456
 Flask-Login==0.4.1
 Flask-WTF==0.14.2
 gunicorn==19.9.0

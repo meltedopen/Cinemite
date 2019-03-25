@@ -20,13 +20,19 @@ $(function() {
         console.log(response);
         response.results.map(child => {
           let movieId = child.id;
+          let card = $(`<div class="card search-wrapper"/>`);
           let img = $(`<img class="result-image" />`);
+          let imgWrapper = $(`<div class="search-image-wrapper" />`);
           let btn = $(
-            `<input class="result-button" type=submit value="Add" data-id="${movieId}"></input>`
+            `<input class="result-button btn btn-dark btn-block" type=submit value="Add To List" data-id="${movieId}"></input>`
           );
           let url = 'https://image.tmdb.org/t/p/w500' + child.poster_path;
           img.attr('src', url);
-          movieGallery.append(img, btn);
+          imgWrapper.append(img);
+          card.append(imgWrapper, btn);
+          if (child.poster_path) {
+            movieGallery.append(card);
+          }
           return movieId;
         });
       },
@@ -50,7 +56,6 @@ $(function() {
     });
   });
 
-
   $('.now-playing').on('click', '.now-playing-button', function(e) {
     console.log('You clicked on a movie');
     let clickedMovieId = e.target.getAttribute('data-id');
@@ -65,7 +70,6 @@ $(function() {
       }
     });
   });
-
 });
 
 // url = https://api.themoviedb.org/3/configuration?api_key=

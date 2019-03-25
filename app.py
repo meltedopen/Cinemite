@@ -1,8 +1,9 @@
 import os
 from flask import Flask, g
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, get_flashed_messages
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from flask_bcrypt import check_password_hash
+from flask_ckeditor import CKEditor, CKEditorField
 from peewee import fn
 
 
@@ -14,7 +15,7 @@ PORT = 8000
 
 app = Flask(__name__)
 app.secret_key = 'adkjfalj.adflja.dfnasdf.asd'
-
+ckeditor = CKEditor(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
@@ -51,9 +52,29 @@ def index():
     #     return render_template('landing.html')
 
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+
 @app.route('/movies')
 def movies():
     return render_template('movies.html')
+
+
+@app.route('/movies/upcoming')
+def upcoming_movies():
+    return render_template('upcoming.html')
+
+
+@app.route('/movies/popular')
+def popular_movies():
+    return render_template('popular.html')
+
+
+@app.route('/movies/top_rated')
+def top_rated_movies():
+    return render_template('top-rated.html')
 
 
 @app.route('/movie/<movieid>/update', methods=['POST', 'GET'])
@@ -78,7 +99,6 @@ def comments_list(movieid):
 
 @app.route('/movie/<movieid>', methods=['POST'])
 def add_movie(movieid=None):
-    print(movieid)
     models.List.create_list_item(current_user.id, movieid)
     return 'success'
 
@@ -87,7 +107,7 @@ def add_movie(movieid=None):
 def register():
     form = forms.RegisterForm()
     if form.validate_on_submit():
-        flash('Yay you registered', 'success')
+        flash('You have successfully registered for Cinemite!', 'success')
         models.User.create_user(
             username=form.username.data,
             email=form.email.data,
@@ -105,15 +125,15 @@ def login():
         try:
             user = models.User.get(models.User.email == form.email.data)
         except models.DoesNotExist:
-            flash("your email or password doesn't match", "error")
+            flash("This user does not exist.", "danger")
         else:
             if check_password_hash(user.password, form.password.data):
                 # creates session
                 login_user(user)
-                flash("You've been logged in", "success")
+                flash("You have successfully logged into Cinemite!", "success")
                 return redirect(url_for('movies'))
             else:
-                flash("your email or password doesn't match", "error")
+                flash("Your email or password is incorrect.", "danger")
     return render_template('login.html', form=form)
 
 
@@ -121,7 +141,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    flash("You've been logged out", "success")
+    flash("You have logged out of Cinemite.", "success")
     return redirect(url_for('index'))
 
 
@@ -147,9 +167,6 @@ def update_user(userid=None):
     return render_template('edit-user.html', form=form, userid=userid)
 
 
-    
-
-
 @app.route('/list')
 @app.route('/list/<username>')
 @login_required
@@ -171,23 +188,6 @@ def delete(movieid=None, userid=None):
     return redirect(url_for('list', username=current_user.username))
 
 
-@app.route('/update/<movieid>/user/<userid>', methods=['POST'])
-@login_required
-def update(movieid=None, userid=None):
-    list = models.List.select().where(models.List.user == userid,
-                                      models.List.movie_id == movieid).get()
-    if list.watched == 0:
-        list.watched = 1
-        list.save()
-        return redirect(url_for('list', username=current_user.username))
-    if list.watched == 1:
-        list.watched = 0
-        list.save()
-        return redirect(url_for('list', username=current_user.username))
-    return redirect(url_for('list', username=current_user.username))
-
-
-
 @app.route('/movie/<movieid>', methods=['GET', 'POST'])
 @login_required
 def movie(movieid=None):
@@ -197,7 +197,7 @@ def movie(movieid=None):
         movie_id = int(movieid)
         from models import List, User
         query = (List.select(List.comment, User.username).join(User).where(
-            User.id == List.user)).where(List.movie_id == movie_id and fn.length(List.comment) > 0)
+            User.id == List.user and List.movie_id == movie_id)).where(fn.length(List.comment) > 0)
         return render_template('movie.html', form=form, movieid=movieid, query=query)
     elif movieid and request.method == 'POST':
         comment = models.List.select().where(models.List.user == current_user,
@@ -205,11 +205,11 @@ def movie(movieid=None):
         comment.comment = form.comment.datas
 
 
-# import os at the top of your file
+@app.route('/search')
+def search():
 
-if 'ON_HEROKU' in os.environ:
-    print('hitting ')
-    models.initialize()
+    return render_template('search.html')
+
 
 if __name__ == '__main__':
     models.initialize()

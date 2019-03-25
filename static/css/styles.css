@@ -1,4 +1,8 @@
 /* styles */
+/* .top-rated {
+  float: none;
+  margin: 0 auto;
+} */
 
 .current-movie {
   display: none;
@@ -10,11 +14,13 @@
 
 .result-image,
 .my-list-image,
-.now-playing-image {
+.now-playing-image,
+.top-rated-image,
+.upcoming-image,
+.popular-image {
   max-width: 100%;
 }
 
-/* isaac styles */
 body {
   overflow-x: hidden;
 }
@@ -36,34 +42,48 @@ body {
 }
 
 .carousel-item {
-  height: 450px;
+  height: 700px;
 }
 
 .carousel-image-1 {
   background: url('/static/images/slider1.jpg');
+  background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed;
-  background-position: center top;
+  background-position: center;
 }
 
 .carousel-image-2 {
   background: url('/static/images/slider2.jpg');
+  background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed;
-  background-position: center top;
+  background-position: center bottom;
 }
 
 .carousel-image-3 {
   background: url('/static/images/slider3.jpg');
+  background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed;
+  background-position: center;
+}
+
+.carousel-image-4 {
+  background: url('/static/images/slider4.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center left;
+}
+
+.carousel-image-5 {
+  background: url('/static/images/slider5.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
   background-position: center top;
 }
 
 #home-heading {
   position: relative;
   min-height: 200px;
-  background: url('/static/images/lights.jpg');
+  background: url('/static/images/film.jpg');
   background-attachment: fixed;
   background-repeat: no-repeat;
   text-align: center;
@@ -84,23 +104,49 @@ body {
   color: #fff;
 }
 
-/* .movie-gallery {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-} */
+.about-img {
+  margin-top: -50px;
+}
 
 #team i {
   padding: 5px;
 }
 
+#main-footer a,
 .fa-linkedin,
 .fa-github-square {
   color: white;
 }
 
+#main-footer a:hover,
 .fa-linkedin:hover,
 .fa-github-square:hover {
   color: grey;
+}
+
+.my-movies,
+.movie-gallery,
+.now-playing,
+.popular,
+.upcoming,
+.top-rated {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0 20px;
+}
+
+.search-wrapper,
+.movie-wrapper {
+  width: 15% !important;
+  margin: 10px;
+  justify-content: space-between;
+  background: #000000;
+  border: none;
+}
+
+.my-movie-list {
+  width: 15% !important;
+  margin: 10px;
+  justify-content: space-between;
+  border: none;
 }

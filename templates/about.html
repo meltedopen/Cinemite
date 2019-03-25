@@ -1,0 +1,147 @@
+{% extends "layout.html" %} {% block content %}
+
+<!-- ABOUT HEADER -->
+  <header id="main-header" class="py-2 bg-danger text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1>
+            <i class="fas fa-question-circle"></i> About</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<!-- ABOUT SECTION -->
+  <section id="about" class="py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1>What We Do</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, fuga eaque. Amet, assumenda aliquid tempore dolorum
+            error eveniet doloribus sed repellat quod, dolores fuga ipsam soluta. Aliquam accusantium pariatur aut sint deleniti
+            laborum ducimus voluptatem? Architecto cumque quod suscipit officiis soluta, voluptate dicta blanditiis similique
+            praesentium temporibus adipisci debitis labore!</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, fuga eaque. Amet, assumenda aliquid tempore dolorum
+            error eveniet doloribus sed repellat quod, dolores fuga ipsam soluta. Aliquam accusantium pariatur aut sint deleniti
+            laborum ducimus voluptatem? Architecto cumque quod suscipit officiis soluta, voluptate dicta blanditiis similique
+            praesentium temporibus adipisci debitis labore!</p>
+        </div>
+        <div class="col-md-6">
+          <img src="/static/images/popcorn.jpg" alt="" class="img-fluid rounded-circle d-none d-md-block about-img">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ICON BOXES -->
+  <section id="icon-boxes" class="py-5 text-center">
+    <div class="container">
+    <h1 class="pb-3">Technologies Used</h1>
+    </hr>
+      <div class="row mb-4">
+        <div class="col-md-4">
+          <div class="card bg-danger text-white text-center">
+            <div class="card-body">
+              <i class="fas fa-film fa-3x"></i>
+              <h3>TMDB</h3>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, adipisci.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card bg-dark text-white text-center">
+            <div class="card-body">
+              <i class="fab fa-python fa-3x"></i>
+              <h3>Python</h3>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, adipisci.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card bg-danger text-white text-center">
+            <div class="card-body">
+              <i class="fab fa-js fa-3x"></i>
+              <h3>Javascript</h3>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, adipisci.
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row mb-4">
+        <div class="col-md-4">
+          <div class="card bg-dark text-white text-center">
+            <div class="card-body">
+              <i class="fab fa-bootstrap fa-3x"></i>
+              <h3>Bootstrap</h3>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, adipisci.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card bg-danger text-white text-center">
+            <div class="card-body">
+              <i class="fa fa-database fa-3x"></i>
+              <h3>SQLite</h3>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, adipisci.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card bg-dark text-white text-center">
+            <div class="card-body">
+              <i class="fab fa-github fa-3x"></i>
+              <h3>Github</h3>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, adipisci.
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- meet the team -->
+<section id="team" class="py-5 text-center bg-dark text-white">
+  <div class="container">
+    <h1>Meet The Team</h1>
+    <hr />
+    <div class="row">
+      <div class="col-md-4">
+        <img
+          src="/static/images/tiffany.jpeg"
+          alt=""
+          class="img-fluid rounded-circle mb-2"
+        />
+        <h4>Tiffany Teaze</h4>
+        <a href="https://www.linkedin.com/in/tiffanyteaze/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+          <a href="https://github.com/tiffanyteaze" target="_blank"><i class="fab fa-github-square fa-2x"></i></a>  
+      </div>
+      <div class="col-md-4">
+        <img
+          src="/static/images/joe.jpeg"
+          alt=""
+          class="img-fluid rounded-circle mb-2"
+        />
+        <h4>Joe Baker</h4>
+        <a href="https://www.linkedin.com/in/joelucasbaker/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+          <a href="https://github.com/josephlbaker" target="_blank"><i class="fab fa-github-square fa-2x"></i></a>  
+      </div>
+      <div class="col-md-4">
+        <img
+          src="/static/images/isaac.jpeg"
+          alt=""
+          class="img-fluid rounded-circle mb-2"
+        />
+        <h4>Isaac Chang</h4>
+          <a href="https://www.linkedin.com/in/isaacchang5/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+          <a href="https://github.com/meltedopen" target="_blank"><i class="fab fa-github-square fa-2x"></i></a>  
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+{% endblock %}
