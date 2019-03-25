@@ -46,7 +46,7 @@ $(document).ready(function(e) {
             let img = $(`<img class="popular-image" />`);
             let imgWrapper = $(`<div class="image-wrapper" />`);
             let btn = $(
-                `<input class="popular-button" type=submit value="Add" data-id="${movieId}"></input>`
+                `<input class="popular-button" type=submit value="Add to List" data-id="${movieId}"></input>`
             );
             let url = 'https://image.tmdb.org/t/p/w500' + child.poster_path;
             img.attr('src', url);

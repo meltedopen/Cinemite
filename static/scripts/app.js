@@ -24,7 +24,7 @@ $(function () {
           let img = $(`<img class="result-image" />`);
           let imgWrapper = $(`<div class="search-image-wrapper" />`);
           let btn = $(
-            `<input class="result-button" type=submit value="Add" data-id="${movieId}"></input>`
+            `<input class="result-button" type=submit value="Add To List" data-id="${movieId}"></input>`
           );
           let url = 'https://image.tmdb.org/t/p/w500' + child.poster_path;
           img.attr('src', url);

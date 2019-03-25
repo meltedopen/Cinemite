@@ -3,7 +3,7 @@ from flask import render_template, flash, redirect, url_for, request, get_flashe
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from flask_bcrypt import check_password_hash
 from flask_ckeditor import CKEditor, CKEditorField
-from peewee import *
+from peewee import fn
 
 
 import models
@@ -184,22 +184,6 @@ def delete(movieid=None, userid=None):
     list = models.List.select().where(models.List.user == userid,
                                       models.List.movie_id == movieid).get()
     list.delete_instance()
-    return redirect(url_for('list', username=current_user.username))
-
-
-@app.route('/update/<movieid>/user/<userid>', methods=['POST'])
-@login_required
-def update(movieid=None, userid=None):
-    list = models.List.select().where(models.List.user == userid,
-                                      models.List.movie_id == movieid).get()
-    if list.watched == 0:
-        list.watched = 1
-        list.save()
-        return redirect(url_for('list', username=current_user.username))
-    if list.watched == 1:
-        list.watched = 0
-        list.save()
-        return redirect(url_for('list', username=current_user.username))
     return redirect(url_for('list', username=current_user.username))
 
 
