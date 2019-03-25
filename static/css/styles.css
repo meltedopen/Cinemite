@@ -136,3 +136,31 @@ body {
   justify-content: space-between;
   border: none;
 }
+
+.upcoming-button,
+.my-movies-button,
+.movie-gallery-button,
+.now-playing-button {
+  background: white;
+}
+
+input[disabled="disabled"] {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+@media only screen and (max-width: 500px) {
+
+  .my-movies,
+  .movie-gallery,
+  .now-playing {
+    flex-direction: row;
+  }
+
+  .search-wrapper,
+  .movie-wrapper,
+  .search-wrapper img,
+  .movie-wrapper img  {
+    width: 100% !important;
+  }
+}
