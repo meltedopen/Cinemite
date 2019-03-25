@@ -1,7 +1,7 @@
 {% extends "layout.html" %} {% block content %}
 
 <!-- MOVIES HEADER -->
-  <header id="main-header" class="py-2 mb-2 bg-danger text-white">
+  <header id="main-header" class="py-2 mb-3 bg-danger text-white">
     <div class="container">
       <div class="row">
         <div class="col-md-6">
@@ -77,7 +77,7 @@
           let img = $(`<img class="now-playing-image" />`);
           let imgWrapper = $(`<div class="image-wrapper" />`);
           let btn = $(
-            `<input class="now-playing-button" type=submit value="Add To List" data-id="${movieId}"></input>`
+            `<input class="now-playing-button btn btn-dark btn-block" type=submit value="Add To List" data-id="${movieId}"></input>`
           );
           let url = 'https://image.tmdb.org/t/p/w500' + child.poster_path;
           let nowPlaying = $('.now-playing');

@@ -6,7 +6,7 @@ $(document).ready(function() {
 
   // slider config
   $('.carousel').carousel({
-    interval: 6000,
-    pause: 'hover'
+    interval: 4000,
+    pause: false
   });
 });

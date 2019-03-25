@@ -58,7 +58,7 @@ body {
   height: 700px;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center top;
+  background-position: center bottom;
 }
 
 .carousel-image-3 {
@@ -69,10 +69,26 @@ body {
   background-position: center;
 }
 
+.carousel-image-4 {
+  background: url('/static/images/slider4.jpg');
+  height: 700px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center left;
+}
+
+.carousel-image-5 {
+  background: url('/static/images/slider5.jpg');
+  height: 700px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+}
+
 #home-heading {
   position: relative;
   min-height: 200px;
-  background: url('/static/images/lights.jpg');
+  background: url('/static/images/film.jpg');
   background-attachment: fixed;
   background-repeat: no-repeat;
   text-align: center;
@@ -115,7 +131,10 @@ body {
 
 .my-movies,
 .movie-gallery,
-.now-playing {
+.now-playing,
+.popular,
+.upcoming,
+.top-rated {
   display: flex;
   justify-content: space-evenly;
   padding: 0 20px;

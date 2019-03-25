@@ -1,6 +1,6 @@
-$(function () {
+$(function() {
   // let key = "bcd90145aa0a9afa766db2577135dbf4";
-  $('.search').on('submit', function (e) {
+  $('.search').on('submit', function(e) {
     console.log('on submit');
     e.preventDefault();
 
@@ -16,7 +16,7 @@ $(function () {
     $.ajax({
       method: 'GET',
       url: tmdbUrl,
-      success: function (response) {
+      success: function(response) {
         console.log(response);
         response.results.map(child => {
           let movieId = child.id;
@@ -24,7 +24,7 @@ $(function () {
           let img = $(`<img class="result-image" />`);
           let imgWrapper = $(`<div class="search-image-wrapper" />`);
           let btn = $(
-            `<input class="result-button" type=submit value="Add To List" data-id="${movieId}"></input>`
+            `<input class="result-button btn btn-dark btn-block" type=submit value="Add To List" data-id="${movieId}"></input>`
           );
           let url = 'https://image.tmdb.org/t/p/w500' + child.poster_path;
           img.attr('src', url);
@@ -36,36 +36,36 @@ $(function () {
           return movieId;
         });
       },
-      error: function (error) {
+      error: function(error) {
         console.log(error);
       }
     });
   });
 
-  $('.movie-gallery').on('click', '.result-button', function (e) {
+  $('.movie-gallery').on('click', '.result-button', function(e) {
     let clickedMovieId = e.target.getAttribute('data-id');
     $.ajax({
       method: 'POST',
       url: `http://localhost:8000/movie/${clickedMovieId}`,
-      success: function (res) {
+      success: function(res) {
         console.log(`Clicked Movie ID was successfully added to DB: ${res}`);
       },
-      error: function (error) {
+      error: function(error) {
         console.log(error);
       }
     });
   });
 
-  $('.now-playing').on('click', '.now-playing-button', function (e) {
+  $('.now-playing').on('click', '.now-playing-button', function(e) {
     console.log('You clicked on a movie');
     let clickedMovieId = e.target.getAttribute('data-id');
     $.ajax({
       method: 'POST',
       url: `http://localhost:8000/movie/${clickedMovieId}`,
-      success: function (res) {
+      success: function(res) {
         console.log(`Clicked Movie ID was successfully added to DB: ${res}`);
       },
-      error: function (error) {
+      error: function(error) {
         console.log(error);
       }
     });
