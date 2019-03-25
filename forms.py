@@ -27,17 +27,17 @@ class CommentForm(Form):
 
 class UserForm(Form):
     username = StringField(
-        'Edit your username',
+        'Change Username:',
         validators=[
             DataRequired()
         ])
     email = StringField(
-        'Edit your email',
+        'Change Email:',
         validators=[
             DataRequired()
         ])
     password = StringField(
-        'Edit your password',
+        'Change Password:',
         validators=[
             DataRequired()
         ])
