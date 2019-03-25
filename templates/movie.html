@@ -24,7 +24,7 @@
         </div>
         <div class="col-md-3">
           <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addPostModal">
-            <i class="fas fa-plus"></i> Add Post
+            <i class="fas fa-plus"></i> Add Comment
           </a>
         </div>
       </div>
@@ -37,7 +37,7 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header bg-primary text-white">
-          <h5 class="modal-title">Add Review</h5>
+          <h5 class="modal-title">Add Comment</h5>
           <button class="close" data-dismiss="modal">
             <span>&times;</span>
           </button>
@@ -94,8 +94,8 @@
       <div class="card card-body">
 {% for comment in query %}
 {% if comment.comment.startswith('<p>') and comment.comment.endswith('</p>') %}
-{{comment.comment[3:-4]}}
-- {{comment.user.username}} 
+{{comment.comment[3:-4]}} 
+- {{comment.user.username}} </br>
 {% endif %}
 {% endfor %}
 </div>

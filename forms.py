@@ -19,7 +19,7 @@ def email_exists(form, field):
 
 class CommentForm(Form):
     comment = CKEditorField(
-        'Write a review',
+        'Write a comment:',
         validators=[
             DataRequired()
         ])
