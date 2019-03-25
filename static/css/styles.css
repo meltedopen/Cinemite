@@ -42,12 +42,11 @@ body {
 }
 
 .carousel-item {
-  height: 450px;
+  height: 700px;
 }
 
 .carousel-image-1 {
   background: url('/static/images/slider1.jpg');
-  height: 700px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -55,7 +54,6 @@ body {
 
 .carousel-image-2 {
   background: url('/static/images/slider2.jpg');
-  height: 700px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center bottom;
@@ -63,7 +61,6 @@ body {
 
 .carousel-image-3 {
   background: url('/static/images/slider3.jpg');
-  height: 700px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -71,7 +68,6 @@ body {
 
 .carousel-image-4 {
   background: url('/static/images/slider4.jpg');
-  height: 700px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center left;
@@ -79,7 +75,6 @@ body {
 
 .carousel-image-5 {
   background: url('/static/images/slider5.jpg');
-  height: 700px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center top;
