@@ -172,7 +172,8 @@ input[disabled='disabled'] {
 @media only screen and (max-width: 500px) {
   .my-movies,
   .movie-gallery,
-  .now-playing {
+  .now-playing,
+  .popular{
     flex-direction: row;
   }
 
