@@ -156,16 +156,22 @@ body {
   border: none;
 }
 
-.upcoming-button,
+/* .upcoming-button,
 .my-movies-button,
 .movie-gallery-button,
 .now-playing-button {
   background: white;
-}
+} */
 
 input[disabled="disabled"] {
   background-color: #000000;
   color: #ffffff;
+}
+
+.field input{
+  margin-left: auto;
+  margin-right: auto;
+  background-color: red !important;
 }
 
 @media only screen and (max-width: 500px) {

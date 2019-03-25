@@ -59,9 +59,10 @@ class List(Model):
                 user=user_id,
                 movie_id=movie_id
             )
-            flash('This movie has been added to your watch list.', 'success')
+            # flash('This movie has been added to your watch list.', 'success')
         except IntegrityError:
-            flash('This movie has already been added to your watch list', 'danger')
+            return success
+            # flash('This movie has already been added to your watch list', 'danger')
 
 
 def initialize():
