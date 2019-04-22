@@ -27,7 +27,7 @@ class User(UserMixin, Model):
         return List.select().where(List.user_id == self)
 
     @classmethod
-    def create_user(cls, username, email, password, avatar="../static/images/brock.png", admin=False):
+    def create_user(cls, username, email, password, avatar="../static/images/default_user.jpg", admin=False):
         try:
             cls.create(
                 username=username,
