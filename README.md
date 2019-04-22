@@ -13,6 +13,10 @@
 
 # Technologies Used
 
-![list.html](https://monosnap.com/image/iPcDh3WgeVl4rfOPLl0Z5z6sFO9S11.png)
+https://mail.google.com/mail/u/0?ui=2&ik=54f15c5846&attid=0.1&permmsgid=msg-a:r7960161491613133279&th=169b3eb9c7a1c1ac&view=att&disp=safe&realattid=f_jto2stv90
 
-![Screenshot](joe_code.png)
+# Code we're proud of
+
+https://mail.google.com/mail/u/0?ui=2&ik=54f15c5846&attid=0.2&permmsgid=msg-a:r7960161491613133279&th=169b3eb9c7a1c1ac&view=att&disp=safe&realattid=f_jto2t3871
+
+https://mail.google.com/mail/u/0?ui=2&ik=54f15c5846&attid=0.3&permmsgid=msg-a:r7960161491613133279&th=169b3eb9c7a1c1ac&view=att&disp=safe&realattid=f_jto2tvok2
